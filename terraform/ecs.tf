@@ -39,8 +39,8 @@ resource "aws_security_group_rule" "fg_ingress" {
   type              = "ingress"
   description       = "Ingress to Fargate"
   security_group_id = data.aws_security_group.fg.id
-  from_port         = 80
-  to_port           = 80
+  from_port         = 443
+  to_port           = 443
   protocol          = "tcp"
 
   source_security_group_id = var.elb_type == "ALB" ? local.alb_sg_id : null
@@ -109,7 +109,7 @@ resource "aws_ecs_task_definition" "app" {
       memory      = 1024
       name        = local.service_name
       healthcheck = {
-        command = ["CMD-SHELL", "curl http://localhost || exit 1"]
+        command = ["CMD-SHELL", "curl --cacert /cert.pem https://localhost || exit 1"]
       }
       networkMode = "awsvpc"
       environment = [
@@ -130,8 +130,8 @@ resource "aws_ecs_task_definition" "app" {
       portMappings = [
         {
           protocol      = "tcp"
-          containerPort = 80
-          hostPort      = 80
+          containerPort = 443
+          hostPort      = 443
         }
       ]
       logConfiguration = {
@@ -180,6 +180,6 @@ resource "aws_ecs_service" "nginx" {
   load_balancer {
     target_group_arn = module.load_balancer.target_group_arns[0]
     container_name   = local.service_name
-    container_port   = 80
+    container_port   = 443
   }
 }

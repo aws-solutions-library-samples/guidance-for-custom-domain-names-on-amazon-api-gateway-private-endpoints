@@ -11,11 +11,11 @@ module "load_balancer" {
   target_groups = [
     {
       name_prefix      = length(local.name_prefix) > 6 ? substr(local.name_prefix, 0, 6) : local.name_prefix
-      backend_protocol = var.elb_type == "ALB" ? "HTTP" : "TCP"
-      backend_port     = "80"
+      backend_protocol = var.elb_type == "ALB" ? "HTTPS" : "TCP"
+      backend_port     = "443"
       target_type      = "ip"
       health_check = {
-        protocol            = var.elb_type == "ALB" ? "HTTP" : "TCP"
+        protocol            = var.elb_type == "ALB" ? "HTTPS" : "TCP"
         healthy_threshold   = 3
         unhealthy_threshold = 3
         interval            = var.elb_type == "ALB" ? 5 : 10

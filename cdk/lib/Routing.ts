@@ -128,7 +128,7 @@ export class RoutingConstruct extends Construct
                 this,
                 `${ stackName }-nlb-target-group`,
                 {
-                    port: 80,
+                    port: 443,
                     vpc: props.vpc,
                     protocol: alb.Protocol.TCP,
                     targetType: alb.TargetType.IP,
@@ -139,7 +139,7 @@ export class RoutingConstruct extends Construct
             )
             networkTargetGroupHttps.configureHealthCheck( {
                 path: "/",
-                protocol: alb.Protocol.HTTP,
+                protocol: alb.Protocol.HTTPS,
             } );
             const nlbListener = networkLoadBalancer.addListener( `${ stackName }-nlb-listener`, {
                 protocol: alb.Protocol.TLS,
@@ -189,9 +189,9 @@ export class RoutingConstruct extends Construct
                 this,
                 `${ stackName }-alb-target-group`,
                 {
-                    port: 80,
+                    port: 443,
                     vpc: props.vpc,
-                    protocol: alb.ApplicationProtocol.HTTP,
+                    protocol: alb.ApplicationProtocol.HTTPS,
                     targetType: alb.TargetType.IP,
                 }
             )
@@ -199,7 +199,7 @@ export class RoutingConstruct extends Construct
             // Health check for containers to check they were deployed correctly
             targetGroupHttps.configureHealthCheck( {
                 path: "/",
-                protocol: alb.Protocol.HTTP,
+                protocol: alb.Protocol.HTTPS,
                 interval: cdk.Duration.seconds( 5 ),
                 timeout: cdk.Duration.seconds( 2 ),
             } );
