@@ -30,13 +30,6 @@ optional args:
 src_dir="${PWD}"
 outputs_dir="${src_dir}/outputs"
 mkdir -p "${outputs_dir}"
-endpoints=(
-    "ecr.dkr"
-    "ecr.api"
-    "execute-api"
-    "logs"
-    "s3"
-)
 
 # Set Execution values from Args
 while [ $# -gt 0 ]; do
@@ -291,6 +284,7 @@ if [ "${execution_tool}" == "cdk" ]; then
 			PROXY_DOMAINS=$(ts-node pre-hook.ts --proxyFilePath="${PROXY_CONFIG_PATH}" | jq -c .)
 			export PROXY_DOMAINS
 
+			# shellcheck disable=SC2086
 			npx --yes cdk  --no-strict --profile "${AWS_PROFILE}" "${action}" ${cdk_args:-} ${downstream_args:-}
 
 			success=$?
@@ -348,9 +342,12 @@ if [ "${execution_tool}" == "terraform" ]; then
 		terraform init
 		
 		# Execute terraform action
+		# shellcheck disable=SC2086
 		terraform "${action}" ${tf_args:-} ${downstream_args:-}
-		if [ -f ${src_dir}/outputs/outputs.json ]; then
-			cat ${src_dir}/outputs/outputs.json | jq -r > ${src_dir}/outputs/outputs.json
+		if [ -f "${src_dir}/outputs/outputs.json" ] && [ ! -f "${src_dir}/outputs/outputs.json.bak" ]; then
+			mv "${src_dir}/outputs/outputs.json" "${src_dir}/outputs/outputs.json.bak"
+			jq -r < "${src_dir}/outputs/outputs.json.bak"  > "${src_dir}/outputs/outputs.json"
+			rm "${src_dir}/outputs/outputs.json.bak"
 		fi
 		popd >/dev/null
 		;;
