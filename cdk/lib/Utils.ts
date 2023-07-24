@@ -1,23 +1,7 @@
+import { proxyDomain } from '../bin/Main'
 
-import { proxyDomain } from '../bin/Main';
-import * as ec2 from 'aws-cdk-lib/aws-ec2'
-
-function checkApiGatewayURLPattern ( url: string )
-{
-
-    const pattern = /https:\/\/[a-z0-9]*.execute-api.(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-\d.amazonaws.com\/[a-z0-9]/ig
-    const reg = new RegExp( pattern )
-    if ( !reg.test( url ) )
-    {
-        const msg = `PRIVATE_API_URL in file proxy-config.yaml with value ${ url } does not follow a pattern https://<api-id>.execute-api.<region>.amazonaws.com/stage/`
-        throw new Error( msg )
-    }
-}
-
-
-export const GenerateNginxConfig = ( domainsList: proxyDomain[] ): string =>
-{
-    let conf_file_str = `user  nginx;
+export const GenerateNginxConfig = (domainsList: proxyDomain[]): string => {
+  let conf_file_str = `user  nginx;
 worker_processes  auto;
 
 error_log  /var/log/nginx/error.log info;
@@ -55,36 +39,36 @@ http {
         add_header Content-Type text/html;
       }        
     }
-    `    
-    domainsList.forEach( ( record ) =>
-    {
-        // console.log(`${record.PRIVATE_API_URL}`);
-        //extract api id from api gateway url
-        const apiId = record.PRIVATE_API_URL.split( "." )[ 0 ].split( 'https://' )[ 1 ]
-        const privateAPIurl =`https://API_GATEWAY_VPC_DNS_${record.PRIVATE_API_URL.substring( record.PRIVATE_API_URL.indexOf("amazonaws.com") + 13)}`
-        // console.log( `${ privateAPIurl }` )
+    `
+  domainsList.forEach((record) => {
+    // console.log(`${record.PRIVATE_API_URL}`);
+    // extract api id from api gateway url
+    const apiId = record.PRIVATE_API_URL.split('.')[0].split('https://')[1]
+    const privateAPIurl = `https://API_GATEWAY_VPC_DNS_${record.PRIVATE_API_URL.substring(
+      record.PRIVATE_API_URL.indexOf('amazonaws.com') + 13
+    )}`
+    // console.log( `${ privateAPIurl }` )
 
-        const conf_file_item = `
+    const conf_file_item = `
     server {
       listen 443 ssl;
       ssl_certificate /cert.pem;
       ssl_certificate_key /key.pem;          
-      server_name ${ record.CUSTOM_DOMAIN_URL };
+      server_name ${record.CUSTOM_DOMAIN_URL};
       location / {          
           proxy_set_header X-Upstream-Domain  $server_name;          
           proxy_set_header Referer  $server_name;
-          proxy_set_header x-apigw-api-id ${ apiId };
-          set $apiUrl ${ privateAPIurl };
-          proxy_pass ${ privateAPIurl };
+          proxy_set_header x-apigw-api-id ${apiId};
+          set $apiUrl ${privateAPIurl};
+          proxy_pass ${privateAPIurl};
           
       }
     }
 `
 
-        conf_file_str = conf_file_str + conf_file_item
-    } )
-    conf_file_str = conf_file_str + "}"
-    // console.log(conf_file_str)
-    return conf_file_str
-
+    conf_file_str = conf_file_str + conf_file_item
+  })
+  conf_file_str = conf_file_str + '}'
+  // console.log(conf_file_str)
+  return conf_file_str
 }

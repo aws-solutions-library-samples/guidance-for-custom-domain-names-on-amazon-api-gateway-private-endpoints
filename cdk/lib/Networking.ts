@@ -42,7 +42,7 @@ export class NetworkingConstruct extends Construct
         if ( props.createVpc.toLocaleLowerCase() === "true" )
         {
             console.log( `CREATE_VPC -> TRUE` );
-            let subnets: ec2.SubnetConfiguration[] = [ {
+            const subnets: ec2.SubnetConfiguration[] = [ {
                 name: `${ stackName }-private-subnet`,
                 subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
             } ]
@@ -70,7 +70,7 @@ export class NetworkingConstruct extends Construct
                 props.externalVpcId ||
                 this._error( "EXTERNAL_VPC_ID value is required when CREATE_VPC is false. Check ReadMe.md for detailed instructions" );
             this.vpc = ec2.Vpc.fromLookup( this, `${ stackName }-vpc`, {
-                vpcId: vpcId!,
+                vpcId: vpcId,
             } ) as ec2.Vpc;
 
         }
@@ -160,11 +160,11 @@ export class NetworkingConstruct extends Construct
 
                 this.albSG.connections.allowTo( new ec2.Connections( {
                     securityGroups: [ this.fgSG ]
-                } ), ec2.Port.tcp( 80 ) )
+                } ), ec2.Port.tcp( 443 ) )
 
                 this.fgSG.connections.allowFrom( new ec2.Connections( {
                     securityGroups: [ this.albSG ]
-                } ), ec2.Port.tcp( 80 ) )
+                } ), ec2.Port.tcp( 443 ) )
 
                 console.log( `Create ALB SG` );
             } else
@@ -186,7 +186,7 @@ export class NetworkingConstruct extends Construct
                 //Egress / Ingress rules for security group
                 this.privateSubnets.forEach( ( subnet ) =>
                 {
-                    this.fgSG.addIngressRule( ec2.Peer.ipv4( subnet.ipv4CidrBlock ), ec2.Port.tcp( 80 ), 'Allow ingress traffic from private subnets CIDR, where network load balancer is hosted to reach Fargate service' )
+                    this.fgSG.addIngressRule( ec2.Peer.ipv4( subnet.ipv4CidrBlock ), ec2.Port.tcp( 443 ), 'Allow ingress traffic from private subnets CIDR, where network load balancer is hosted to reach Fargate service' )
                 } )
             }
         }
@@ -252,7 +252,7 @@ export class NetworkingConstruct extends Construct
             } );
 
             // Create Interface Endpoint for ecr-dkr
-            const ecrDkrVPCInterfaceEndpoint = new ec2.InterfaceVpcEndpoint( this, `${ stackName }-ecr-dkr-interface-endpoint`, {
+            new ec2.InterfaceVpcEndpoint( this, `${ stackName }-ecr-dkr-interface-endpoint`, {
                 vpc: this.vpc,
                 service: ec2.InterfaceVpcEndpointAwsService.ECR_DOCKER,
                 securityGroups: [ this.endpointSG,
@@ -262,7 +262,7 @@ export class NetworkingConstruct extends Construct
             } )
 
             // Create Interface Endpoint for S3        
-            const s3Gateway = new ec2.GatewayVpcEndpoint( this, `${ stackName }-s3-gateway-endpoint`, {
+            new ec2.GatewayVpcEndpoint( this, `${ stackName }-s3-gateway-endpoint`, {
                 vpc: this.vpc,
                 service: ec2.GatewayVpcEndpointAwsService.S3,
             } )
