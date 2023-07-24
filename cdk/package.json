@@ -8,7 +8,9 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "npx cdk"
+    "cdk": "npx cdk",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "devDependencies": {
     "@aws-sdk/client-ec2": "3.264.0",
@@ -31,10 +33,12 @@
     "@types/string-hash": "1.1.1",
     "aws-cdk-lib": "2.51.0",
     "constructs": "^10.1.143",
+    "eslint": "^8.45.0",
     "extract-domain": "2.4.8",
     "js-yaml": "4.1.0",
     "npx": "^10.2.2",
     "parse-domain": "7.0.1",
+    "prettier": "^3.0.0",
     "source-map-support": "^0.5.21",
     "string-hash": "1.1.3",
     "ts-command-line-args": "2.3.1"
