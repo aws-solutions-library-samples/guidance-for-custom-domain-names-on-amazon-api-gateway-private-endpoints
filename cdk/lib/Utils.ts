@@ -1,4 +1,4 @@
-import { proxyDomain } from '../bin/Main'
+import { proxyDomain } from "../bin/Main";
 
 export const GenerateNginxConfig = (domainsList: proxyDomain[]): string => {
   let conf_file_str = `user  nginx;
@@ -39,14 +39,14 @@ http {
         add_header Content-Type text/html;
       }        
     }
-    `
+    `;
   domainsList.forEach((record) => {
     // console.log(`${record.PRIVATE_API_URL}`);
     // extract api id from api gateway url
-    const apiId = record.PRIVATE_API_URL.split('.')[0].split('https://')[1]
+    const apiId = record.PRIVATE_API_URL.split(".")[0].split("https://")[1];
     const privateAPIurl = `https://API_GATEWAY_VPC_DNS_${record.PRIVATE_API_URL.substring(
-      record.PRIVATE_API_URL.indexOf('amazonaws.com') + 13
-    )}`
+      record.PRIVATE_API_URL.indexOf("amazonaws.com") + 13,
+    )}`;
     // console.log( `${ privateAPIurl }` )
 
     const conf_file_item = `
@@ -64,11 +64,11 @@ http {
           
       }
     }
-`
+`;
 
-    conf_file_str = conf_file_str + conf_file_item
-  })
-  conf_file_str = conf_file_str + '}'
+    conf_file_str = conf_file_str + conf_file_item;
+  });
+  conf_file_str = conf_file_str + "}";
   // console.log(conf_file_str)
-  return conf_file_str
-}
+  return conf_file_str;
+};

@@ -1,12 +1,12 @@
-import { Stack } from 'aws-cdk-lib'
-import * as aws_cert from 'aws-cdk-lib/aws-certificatemanager'
-import * as ec2 from 'aws-cdk-lib/aws-ec2'
-import * as alb from 'aws-cdk-lib/aws-elasticloadbalancingv2'
-import * as aws_route53 from 'aws-cdk-lib/aws-route53'
-import { LoadBalancerTarget } from 'aws-cdk-lib/aws-route53-targets'
-import { Construct } from 'constructs'
-import * as cdk from 'aws-cdk-lib'
-import { proxyDomain, elbTypeEnum } from '../bin/Main'
+import { Stack } from "aws-cdk-lib";
+import * as aws_cert from "aws-cdk-lib/aws-certificatemanager";
+import * as ec2 from "aws-cdk-lib/aws-ec2";
+import * as alb from "aws-cdk-lib/aws-elasticloadbalancingv2";
+import * as aws_route53 from "aws-cdk-lib/aws-route53";
+import { LoadBalancerTarget } from "aws-cdk-lib/aws-route53-targets";
+import { Construct } from "constructs";
+import * as cdk from "aws-cdk-lib";
+import { proxyDomain, elbTypeEnum } from "../bin/Main";
 
 type RoutingProps = {
   vpc: ec2.Vpc;
@@ -19,32 +19,32 @@ type RoutingProps = {
 export class RoutingConstruct extends Construct {
   public readonly targetGroup:
     | alb.ApplicationTargetGroup
-    | alb.NetworkTargetGroup
+    | alb.NetworkTargetGroup;
 
-  public readonly elbDns: string
+  public readonly elbDns: string;
 
-  constructor (scope: Construct, id: string, props: RoutingProps) {
-    super(scope, id)
-    const stackName = Stack.of(this).stackName
+  constructor(scope: Construct, id: string, props: RoutingProps) {
+    super(scope, id);
+    const stackName = Stack.of(this).stackName;
 
-    let domainsList: proxyDomain[] = props.proxyDomains
+    let domainsList: proxyDomain[] = props.proxyDomains;
 
-    let subnetsObj
-    if (props.createVpc.toLocaleLowerCase() === 'false') {
+    let subnetsObj;
+    if (props.createVpc.toLocaleLowerCase() === "false") {
       // get subnets in cdk from subnet ids
       const subnetIds: string[] = props.externalPrivateSubnetIds
         ? JSON.parse(props.externalPrivateSubnetIds)
-        : undefined
+        : undefined;
       if (subnetIds && subnetIds.length > 0) {
         subnetsObj = subnetIds?.map((subnet: string) => {
           return ec2.Subnet.fromSubnetId(
             this,
             `${stackName}-${subnet}`,
-            subnet
-          )
-        })
+            subnet,
+          );
+        });
       } else {
-        subnetsObj = props.vpc.privateSubnets
+        subnetsObj = props.vpc.privateSubnets;
       }
     }
 
@@ -56,40 +56,40 @@ export class RoutingConstruct extends Construct {
           `hosted-zone-${domain.CUSTOM_DOMAIN_URL}`,
           {
             vpc: props.vpc,
-            zoneName: domain.CUSTOM_DOMAIN_URL
-          }
-        )
+            zoneName: domain.CUSTOM_DOMAIN_URL,
+          },
+        );
 
       return {
         ...domain,
         PRIVATE_ZONE_ID: zone.hostedZoneId,
         PRIVATE_ZONE: zone,
         CERT_DOMAIN: `${domain.CUSTOM_DOMAIN_URL.substring(
-          domain.CUSTOM_DOMAIN_URL.indexOf('.') + 1
-        )}`
-      }
-    })
+          domain.CUSTOM_DOMAIN_URL.indexOf(".") + 1,
+        )}`,
+      };
+    });
 
     const uniqueCertWithPublicZones: {
       KEY: string;
       CERT_DOMAIN: string;
       PUBLIC_ZONE_ID: string;
-    }[] = []
+    }[] = [];
 
     domainsList.forEach((element) => {
       const isDuplicate = uniqueCertWithPublicZones.filter(
         (predicate) =>
-          predicate.KEY === `${element.CERT_DOMAIN}_${element.PUBLIC_ZONE_ID}`
-      )
+          predicate.KEY === `${element.CERT_DOMAIN}_${element.PUBLIC_ZONE_ID}`,
+      );
       // console.log( `isDuplicate --> ${ isDuplicate } ` );
       if (isDuplicate.length === 0) {
         uniqueCertWithPublicZones.push({
           KEY: `${element.CERT_DOMAIN}_${element.PUBLIC_ZONE_ID}`,
           CERT_DOMAIN: element.CERT_DOMAIN,
-          PUBLIC_ZONE_ID: element.PUBLIC_ZONE_ID
-        })
+          PUBLIC_ZONE_ID: element.PUBLIC_ZONE_ID,
+        });
       }
-    })
+    });
 
     // Create wild card certificates and add them to ELB listener
     const certs: aws_cert.Certificate[] = uniqueCertWithPublicZones.map(
@@ -104,15 +104,15 @@ export class RoutingConstruct extends Construct {
               aws_route53.PublicHostedZone.fromHostedZoneId(
                 this,
                 `public-hosted-zone-look-${crt.CERT_DOMAIN}`,
-                `${crt.PUBLIC_ZONE_ID}`
-              )
-            )
-          }
-        )
+                `${crt.PUBLIC_ZONE_ID}`,
+              ),
+            ),
+          },
+        );
 
-        return cert as aws_cert.Certificate
-      }
-    )
+        return cert as aws_cert.Certificate;
+      },
+    );
 
     if (props.elbType === elbTypeEnum.NLB) {
       // Network load balancer
@@ -124,18 +124,18 @@ export class RoutingConstruct extends Construct {
           vpcSubnets: {
             onePerAz: true,
             subnetType:
-              props.createVpc.toLocaleLowerCase() === 'true'
+              props.createVpc.toLocaleLowerCase() === "true"
                 ? ec2.SubnetType.PRIVATE_ISOLATED
                 : undefined,
             subnets:
-              props.createVpc.toLocaleLowerCase() === 'false'
+              props.createVpc.toLocaleLowerCase() === "false"
                 ? subnetsObj
-                : undefined
+                : undefined,
           },
           internetFacing: false,
-          crossZoneEnabled: true
-        }
-      )
+          crossZoneEnabled: true,
+        },
+      );
 
       const networkTargetGroupHttps = new alb.NetworkTargetGroup(
         this,
@@ -146,27 +146,27 @@ export class RoutingConstruct extends Construct {
           protocol: alb.Protocol.TCP,
           targetType: alb.TargetType.IP,
           healthCheck: {
-            interval: cdk.Duration.seconds(10)
-          }
-        }
-      )
+            interval: cdk.Duration.seconds(10),
+          },
+        },
+      );
       networkTargetGroupHttps.configureHealthCheck({
-        path: '/',
-        protocol: alb.Protocol.HTTPS
-      })
+        path: "/",
+        protocol: alb.Protocol.HTTPS,
+      });
       const nlbListener = networkLoadBalancer.addListener(
         `${stackName}-nlb-listener`,
         {
           protocol: alb.Protocol.TLS,
           port: 443,
-          certificates: [...certs]
-        }
-      )
+          certificates: [...certs],
+        },
+      );
 
       nlbListener.addTargetGroups(
         `${stackName}-nlb-listener-target-group`,
-        networkTargetGroupHttps
-      )
+        networkTargetGroupHttps,
+      );
 
       domainsList.forEach((record) => {
         // previously created route 53 hosted zone
@@ -178,16 +178,16 @@ export class RoutingConstruct extends Construct {
           {
             zone: record.PRIVATE_ZONE,
             target: aws_route53.RecordTarget.fromAlias(
-              new LoadBalancerTarget(networkLoadBalancer)
+              new LoadBalancerTarget(networkLoadBalancer),
             ),
             recordName: record.CUSTOM_DOMAIN_URL,
-            deleteExisting: true
-          }
-        )
-      })
+            deleteExisting: true,
+          },
+        );
+      });
 
-      this.targetGroup = networkTargetGroupHttps
-      this.elbDns = `dualstack.${networkLoadBalancer.loadBalancerDnsName}`
+      this.targetGroup = networkTargetGroupHttps;
+      this.elbDns = `dualstack.${networkLoadBalancer.loadBalancerDnsName}`;
     } else {
       // Application load balancer
       const loadBalancer = new alb.ApplicationLoadBalancer(
@@ -198,18 +198,18 @@ export class RoutingConstruct extends Construct {
           vpcSubnets: {
             onePerAz: true,
             subnetType:
-              props.createVpc.toLocaleLowerCase() === 'true'
+              props.createVpc.toLocaleLowerCase() === "true"
                 ? ec2.SubnetType.PRIVATE_ISOLATED
                 : undefined,
             subnets:
-              props.createVpc.toLocaleLowerCase() === 'false'
+              props.createVpc.toLocaleLowerCase() === "false"
                 ? subnetsObj
-                : undefined
+                : undefined,
           },
           securityGroup: props.albSG,
-          internetFacing: false
-        }
-      )
+          internetFacing: false,
+        },
+      );
 
       // Target group to make resources containers discoverable by the application load balancer
       const targetGroupHttps = new alb.ApplicationTargetGroup(
@@ -219,28 +219,28 @@ export class RoutingConstruct extends Construct {
           port: 443,
           vpc: props.vpc,
           protocol: alb.ApplicationProtocol.HTTPS,
-          targetType: alb.TargetType.IP
-        }
-      )
+          targetType: alb.TargetType.IP,
+        },
+      );
 
       // Health check for containers to check they were deployed correctly
       targetGroupHttps.configureHealthCheck({
-        path: '/',
+        path: "/",
         protocol: alb.Protocol.HTTPS,
         interval: cdk.Duration.seconds(5),
-        timeout: cdk.Duration.seconds(2)
-      })
+        timeout: cdk.Duration.seconds(2),
+      });
 
       // only allow HTTPS connections
       const listener = loadBalancer.addListener(`${stackName}-alb-listener`, {
         open: false,
         port: 443,
-        certificates: [...certs]
-      })
+        certificates: [...certs],
+      });
 
       listener.addTargetGroups(`${stackName}-alb-listener-target-group`, {
-        targetGroups: [targetGroupHttps]
-      })
+        targetGroups: [targetGroupHttps],
+      });
 
       domainsList.forEach((record) => {
         // previously created route 53 hosted zone
@@ -252,17 +252,17 @@ export class RoutingConstruct extends Construct {
           {
             zone: record.PRIVATE_ZONE,
             target: aws_route53.RecordTarget.fromAlias(
-              new LoadBalancerTarget(loadBalancer)
+              new LoadBalancerTarget(loadBalancer),
             ),
-            comment: 'Alias to ALB',
+            comment: "Alias to ALB",
             recordName: record.CUSTOM_DOMAIN_URL,
-            deleteExisting: true
-          }
-        )
-      })
+            deleteExisting: true,
+          },
+        );
+      });
 
-      this.targetGroup = targetGroupHttps
-      this.elbDns = `dualstack.${loadBalancer.loadBalancerDnsName}`
+      this.targetGroup = targetGroupHttps;
+      this.elbDns = `dualstack.${loadBalancer.loadBalancerDnsName}`;
     }
   }
 }

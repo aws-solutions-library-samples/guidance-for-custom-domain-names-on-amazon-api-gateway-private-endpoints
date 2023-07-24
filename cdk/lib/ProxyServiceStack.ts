@@ -1,9 +1,9 @@
-import { Construct } from 'constructs'
-import { CfnOutput, Stack, StackProps } from 'aws-cdk-lib'
-import { proxyDomain, elbTypeEnum } from '../bin/Main'
-import { FargateServiceConstruct } from './FargateService'
-import { NetworkingConstruct } from './Networking'
-import { RoutingConstruct } from './Routing'
+import { Construct } from "constructs";
+import { CfnOutput, Stack, StackProps } from "aws-cdk-lib";
+import { proxyDomain, elbTypeEnum } from "../bin/Main";
+import { FargateServiceConstruct } from "./FargateService";
+import { NetworkingConstruct } from "./Networking";
+import { RoutingConstruct } from "./Routing";
 
 type ProxyServiceStackProps = {
   proxyDomains: proxyDomain[];
@@ -23,14 +23,14 @@ type ProxyServiceStackProps = {
 } & StackProps;
 
 export class ProxyServiceStack extends Stack {
-  constructor (scope: Construct, id: string, props: ProxyServiceStackProps) {
-    super(scope, id, props)
-    const stackName = `${Stack.of(this).stackName}`
-    props.elbType !== 'ALB' && props.elbType !== 'NLB'
+  constructor(scope: Construct, id: string, props: ProxyServiceStackProps) {
+    super(scope, id, props);
+    const stackName = `${Stack.of(this).stackName}`;
+    props.elbType !== "ALB" && props.elbType !== "NLB"
       ? this._error(`ELB_TYPE should be ALB or NLB not ${props.elbType}`)
-      : undefined
+      : undefined;
 
-    console.log(`Load Balancer Type-> ${props.elbType.toString()}`)
+    console.log(`Load Balancer Type-> ${props.elbType.toString()}`);
 
     const networkingObject = new NetworkingConstruct(
       this,
@@ -45,11 +45,11 @@ export class ProxyServiceStack extends Stack {
         externalFargateSgId: props.externalFargateSgId,
         externalEndpointSgId: props.externalEndpointSgId,
         externalPrivateSubnetIds:
-          props.createVpc === 'false'
+          props.createVpc === "false"
             ? props.externalPrivateSubnetIds
-            : undefined
-      }
-    )
+            : undefined,
+      },
+    );
 
     const routingObject = new RoutingConstruct(this, `${stackName}-routing`, {
       vpc: networkingObject.vpc,
@@ -58,10 +58,10 @@ export class ProxyServiceStack extends Stack {
       proxyDomains: props.proxyDomains,
       createVpc: props.createVpc,
       externalPrivateSubnetIds:
-        props.createVpc === 'false'
+        props.createVpc === "false"
           ? props.externalPrivateSubnetIds
-          : undefined
-    })
+          : undefined,
+    });
 
     const fargateServiceConstructObj = new FargateServiceConstruct(
       this,
@@ -76,21 +76,21 @@ export class ProxyServiceStack extends Stack {
         taskImage: props.taskImage,
         taskScaleMin: props.taskScaleMin,
         taskScaleMax: props.taskScaleMax,
-        taskScaleCpuPercentage: props.taskScaleCpuPercentage
-      }
-    )
+        taskScaleCpuPercentage: props.taskScaleCpuPercentage,
+      },
+    );
 
-    fargateServiceConstructObj.node.addDependency(networkingObject)
+    fargateServiceConstructObj.node.addDependency(networkingObject);
 
-    new CfnOutput(this, 'vpc_id', { value: networkingObject.vpc.vpcId })
-    new CfnOutput(this, 'elb_dns', { value: routingObject.elbDns })
-    new CfnOutput(this, 'api_gateway_vpce_id', {
-      value: networkingObject.apiGatewayVPCInterfaceEndpointId
-    })
+    new CfnOutput(this, "vpc_id", { value: networkingObject.vpc.vpcId });
+    new CfnOutput(this, "elb_dns", { value: routingObject.elbDns });
+    new CfnOutput(this, "api_gateway_vpce_id", {
+      value: networkingObject.apiGatewayVPCInterfaceEndpointId,
+    });
   }
 
-  _error (msg: string) {
-    throw new Error(msg)
-    return ''
+  _error(msg: string) {
+    throw new Error(msg);
+    return "";
   }
 }
