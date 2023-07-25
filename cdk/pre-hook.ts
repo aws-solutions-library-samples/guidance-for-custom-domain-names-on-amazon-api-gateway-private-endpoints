@@ -14,9 +14,11 @@ const Run = async () => {
     proxyFilePath: { type: String },
   });
 
-  const yamlOutput: unknown = yaml.load(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const yamlOutput: any = yaml.load(
     readFileSync(path.join(args.proxyFilePath), "utf8"),
   );
+
   const proxyDomains: proxyDomain[] = yamlOutput?.APIS as proxyDomain[];
   const publicZonesTotal: route53_sdk.HostedZone[] = await GetPublicZones();
   const domainsList = proxyDomains?.map((record) => {

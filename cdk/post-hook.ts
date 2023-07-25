@@ -5,6 +5,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import * as yaml from "js-yaml";
 import { parse } from "ts-command-line-args";
 import { proxyDomain } from "./bin/Main";
+import { InterfaceVpcEndpointAwsService } from "aws-cdk-lib/aws-ec2";
 type IArguments = {
   region: string;
   // account: string
@@ -24,7 +25,8 @@ async function Run() {
 
   // console.log( `__dirname,args.proxyFilePath--->${ args.proxyFilePath }` );
 
-  const yamlOutput: unknown = yaml.load(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const yamlOutput: any = yaml.load(
     readFileSync(path.join(args.proxyFilePath), "utf8"),
   );
   const proxyDomains: proxyDomain[] = yamlOutput?.APIS as proxyDomain[];
@@ -39,18 +41,22 @@ const GenerateOutputsFile = (
 ): void => {
   // console.log(`${props.stackOutputs}`);
 
-  const apiGatewayVPCInterfaceEndpointId: unknown = (
-    JSON.parse(props.stackOutputs) as unknown
-  )?.find((output: unknown) => output.OutputKey === "apigatewayvpceid")
+  const apiGatewayVPCInterfaceEndpointId: InterfaceVpcEndpointAwsService = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    JSON.parse(props.stackOutputs) as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  )?.find((output: any) => output.OutputKey === "apigatewayvpceid")
     ?.OutputValue;
 
   // console.log( `apiGatewayVPCInterfaceEndpointId--> ${ apiGatewayVPCInterfaceEndpointId }` );
 
-  const outputObj: unknown = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const outputObj: any = {};
   outputObj.STACK_OUTPUTS = JSON.parse(props.stackOutputs);
 
   // const arrApis: any[] = []
-  const arrPolicyMappings: unknown = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const arrPolicyMappings: any = {};
   proxyDomains.forEach((item) => {
     const api_gateway_id =
       item.PRIVATE_API_URL.split("https://")[1].split(".execute-api")[0];
