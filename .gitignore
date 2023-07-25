@@ -2,5 +2,6 @@ ignore/*
 config/*.yaml
 outputs/*
 .vscode/*
+cdk/**/*.js
 tfsec-linux-amd64
 tfsec-checksums.txt
