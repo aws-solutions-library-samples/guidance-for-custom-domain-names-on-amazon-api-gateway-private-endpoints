@@ -20,7 +20,7 @@ const Run = async () => {
   const proxyDomains: proxyDomain[] = yamlOutput?.APIS as proxyDomain[];
   const publicZonesTotal: route53_sdk.HostedZone[] = await GetPublicZones();
   const domainsList = proxyDomains?.map((record) => {
-    checkApiGatewayURLPattern(record.PRIVATE_API_URL, record.CUSTOM_DOMAIN_URL);
+    checkApiGatewayURLPattern(record.PRIVATE_API_URL);
     return {
       ...record,
       PUBLIC_ZONE_ID: GetZoneID(record.CUSTOM_DOMAIN_URL, publicZonesTotal),
@@ -69,6 +69,17 @@ const GetZoneID = function (
   }
   return zoneId;
 };
+
+function checkApiGatewayURLPattern(url: string) {
+  const pattern =
+    /https:\/\/[a-z0-9]*.execute-api.(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-\d.amazonaws.com\/[a-z0-9]/gi;
+  const reg = new RegExp(pattern);
+  if (!reg.test(url)) {
+    const msg = `Supported pattern for PRIVATE_API_URL in proxy configuration file is https://<api-id>.execute-api.<region>.amazonaws.com/stage/ found value PRIVATE_API_URL=${url}`;
+    // console.log(`${msg}`);
+    throw new Error(msg);
+  }
+}
 
 export const GetPublicZones = async (): Promise<route53_sdk.HostedZone[]> => {
   const paginator = route53_sdk.paginateListHostedZones(

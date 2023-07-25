@@ -50,15 +50,14 @@ export class RoutingConstruct extends Construct {
 
     // Create Private Route 53 Zones
     domainsList = domainsList.map((domain) => {
-      const zone: aws_route53.IPrivateHostedZone =
-        new aws_route53.PrivateHostedZone(
-          this,
-          `hosted-zone-${domain.CUSTOM_DOMAIN_URL}`,
-          {
-            vpc: props.vpc,
-            zoneName: domain.CUSTOM_DOMAIN_URL,
-          },
-        );
+      const zone = new aws_route53.PrivateHostedZone(
+        this,
+        `hosted-zone-${domain.CUSTOM_DOMAIN_URL}`,
+        {
+          vpc: props.vpc,
+          zoneName: domain.CUSTOM_DOMAIN_URL,
+        },
+      );
 
       return {
         ...domain,
@@ -72,8 +71,8 @@ export class RoutingConstruct extends Construct {
 
     const uniqueCertWithPublicZones: {
       KEY: string;
-      CERT_DOMAIN: string;
-      PUBLIC_ZONE_ID: string;
+      CERT_DOMAIN: string | undefined;
+      PUBLIC_ZONE_ID: string | undefined;
     }[] = [];
 
     domainsList.forEach((element) => {
@@ -81,7 +80,6 @@ export class RoutingConstruct extends Construct {
         (predicate) =>
           predicate.KEY === `${element.CERT_DOMAIN}_${element.PUBLIC_ZONE_ID}`,
       );
-      // console.log( `isDuplicate --> ${ isDuplicate } ` );
       if (isDuplicate.length === 0) {
         uniqueCertWithPublicZones.push({
           KEY: `${element.CERT_DOMAIN}_${element.PUBLIC_ZONE_ID}`,
@@ -176,7 +174,8 @@ export class RoutingConstruct extends Construct {
           this,
           `${stackName}-a-record-nlb-${record.CUSTOM_DOMAIN_URL}`,
           {
-            zone: record.PRIVATE_ZONE,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            zone: record.PRIVATE_ZONE!,
             target: aws_route53.RecordTarget.fromAlias(
               new LoadBalancerTarget(networkLoadBalancer),
             ),
@@ -250,7 +249,8 @@ export class RoutingConstruct extends Construct {
           this,
           `${stackName}-a-record-alb-${record.CUSTOM_DOMAIN_URL}`,
           {
-            zone: record.PRIVATE_ZONE,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            zone: record.PRIVATE_ZONE!,
             target: aws_route53.RecordTarget.fromAlias(
               new LoadBalancerTarget(loadBalancer),
             ),

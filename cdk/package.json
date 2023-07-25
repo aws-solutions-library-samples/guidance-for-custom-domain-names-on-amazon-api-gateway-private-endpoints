@@ -21,7 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "aws-cdk": "2.49.0",
     "aws-lambda": "1.0.7",
-    "esbuild": "0.17.5",
+    "esbuild": "^0.17.19",
     "eslint": "^8.45.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
     "eslint-plugin-import": "^2.27.5",
