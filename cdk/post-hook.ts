@@ -41,12 +41,12 @@ const GenerateOutputsFile = (
 ): void => {
   // console.log(`${props.stackOutputs}`);
 
-  const apiGatewayVPCInterfaceEndpointId: InterfaceVpcEndpointAwsService = (
+  const apiGatewayVPCInterfaceEndpointId: InterfaceVpcEndpointAwsService =
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    JSON.parse(props.stackOutputs) as any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  )?.find((output: any) => output.OutputKey === "apigatewayvpceid")
-    ?.OutputValue;
+    (JSON.parse(props.stackOutputs) as any)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ?.find((output: any) => output.OutputKey === "apigatewayvpceid")
+      ?.OutputValue;
 
   // console.log( `apiGatewayVPCInterfaceEndpointId--> ${ apiGatewayVPCInterfaceEndpointId }` );
 
