@@ -415,3 +415,5 @@ terraform.rc
 
 # Ignore locally generated files
 config/*.yaml
+tfsec-checksums.txt
+tfsec-linux-amd
