@@ -29,7 +29,7 @@ resource "aws_lb_listener" "this" {
   port              = 443
   protocol          = var.elb_type == "ALB" ? "HTTPS" : "TLS"
   certificate_arn   = module.acm[tolist(local.base_domains)[0]].acm_certificate_arn
-  ssl_policy        = "ELBSecurityPolicy-TLS-1-2-Ext-2018-06"
+  ssl_policy        = "ELBSecurityPolicy-FS-1-2-Res-2019-08"
   default_action {
     type             = "forward"
     target_group_arn = module.load_balancer.target_group_arns[0]
