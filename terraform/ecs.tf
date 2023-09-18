@@ -48,8 +48,7 @@ resource "aws_security_group_rule" "fg_ingress" {
 }
 
 module "ecs" {
-  source  = "terraform-aws-modules/ecs/aws"
-  version = ">=4.1.1"
+  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs.git?ref=2604124d05974c2ee47ff7194d62d55ac425a3cb"
 
   cluster_name = local.name_prefix
   fargate_capacity_providers = {

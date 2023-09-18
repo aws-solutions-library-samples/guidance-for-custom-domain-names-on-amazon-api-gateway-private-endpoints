@@ -28,8 +28,7 @@ resource "random_string" "image_tag" {
 
 #tfsec:ignore:aws-ecr-repository-customer-key #ECR repository encrypted with default keys, end-user can adjust using customer managed KMS key if desired.
 module "docker_image" {
-  source               = "terraform-aws-modules/lambda/aws//modules/docker-build"
-  version              = "~>4.7.1"
+  source               = "git::https://github.com/terraform-aws-modules/terraform-aws-lambda.git//modules/docker-build?ref=9acd3227087db56abac5f78d1a660b08ee159a9c"
   create_ecr_repo      = true
   ecr_repo             = "${local.name_prefix}_${random_string.repo_suffix.result}"
   ecr_force_delete     = true

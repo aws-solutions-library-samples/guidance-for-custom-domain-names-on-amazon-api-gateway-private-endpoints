@@ -20,7 +20,7 @@ jobs:
         run: |
           find . \( ! -regex '\./\.git/.*' \)  -type f -executable -print0 | xargs -0L1 shellcheck
       - name: Setup terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@633666f66e0061ca3b725c73b2ec20cd13a8fdd1
         with:
           terraform_version: 1.5.0
       - name: Terraform update and validate
@@ -31,11 +31,11 @@ jobs:
           terraform init -upgrade
           terraform validate
       - name: Terraform security scan
-        uses: aquasecurity/tfsec-action@v1.0.3
+        uses: aquasecurity/tfsec-action@b466648d6e39e7c75324f25d83891162a721f2d6
         with:
           working_directory: ./terraform
       - name: Update terraform documentation
-        uses: terraform-docs/gh-actions@v1.0.0
+        uses: terraform-docs/gh-actions@f6d59f89a280fa0a3febf55ef68f146784b20ba0
         with:
           working-dir: ./terraform
           output-file: README.md

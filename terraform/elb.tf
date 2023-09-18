@@ -1,6 +1,5 @@
 module "load_balancer" {
-  source  = "terraform-aws-modules/alb/aws"
-  version = ">=8.1.0"
+  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-alb.git?ref=cb8e43d456a863e954f6b97a4a821f41d4280ab8"
 
   name               = local.name_prefix
   load_balancer_type = var.elb_type == "ALB" ? "application" : "network"

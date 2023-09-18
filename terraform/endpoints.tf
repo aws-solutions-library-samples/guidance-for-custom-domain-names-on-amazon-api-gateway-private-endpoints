@@ -30,8 +30,7 @@ data "aws_route_tables" "selected" {
 }
 
 module "endpoints" {
-  source  = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
-  version = "~>3.18.1"
+  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git//modules/vpc-endpoints?ref=bf9a89bf447a9c866dc0d30486aec5a24dbe2631"
 
   security_group_ids = [data.aws_security_group.endpoints.id]
   subnet_ids= local.private_subnets

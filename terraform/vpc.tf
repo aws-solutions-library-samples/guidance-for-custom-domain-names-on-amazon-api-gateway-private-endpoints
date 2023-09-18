@@ -8,8 +8,7 @@ locals {
 #tfsec:ignore:aws-ec2-require-vpc-flow-logs-for-all-vpcs #Flow logs implemented in module, false finding
 module "vpc" {
   count   = var.external_vpc_id == null ? 1 : 0
-  source  = "terraform-aws-modules/vpc/aws"
-  version = ">=3.18.0"
+  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=bf9a89bf447a9c866dc0d30486aec5a24dbe2631"
 
   name                                 = local.name_prefix
   cidr                                 = var.vpc_cidr
