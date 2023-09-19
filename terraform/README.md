@@ -5,7 +5,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=1.2, ~>1.4 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=4.0 |
-| <a name="requirement_docker"></a> [docker](#requirement\_docker) | ~>2.22.0 |
+| <a name="requirement_docker"></a> [docker](#requirement\_docker) | ~>3.0.0 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | ~>2.2.2 |
 | <a name="requirement_jq"></a> [jq](#requirement\_jq) | ~>0.2.1 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | ~>2.2.3 |
@@ -16,7 +16,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.9.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.17.0 |
 | <a name="provider_external"></a> [external](#provider\_external) | 2.2.3 |
 | <a name="provider_local"></a> [local](#provider\_local) | 2.2.3 |
 | <a name="provider_null"></a> [null](#provider\_null) | 3.2.1 |
@@ -26,12 +26,12 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_acm"></a> [acm](#module\_acm) | terraform-aws-modules/acm/aws | ~>4.3.1 |
-| <a name="module_docker_image"></a> [docker\_image](#module\_docker\_image) | terraform-aws-modules/lambda/aws//modules/docker-build | ~>4.7.1 |
-| <a name="module_ecs"></a> [ecs](#module\_ecs) | terraform-aws-modules/ecs/aws | >=4.1.1 |
-| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | terraform-aws-modules/vpc/aws//modules/vpc-endpoints | ~>3.18.1 |
-| <a name="module_load_balancer"></a> [load\_balancer](#module\_load\_balancer) | terraform-aws-modules/alb/aws | >=8.1.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | >=3.18.0 |
+| <a name="module_acm"></a> [acm](#module\_acm) | git::https://github.com/terraform-aws-modules/terraform-aws-acm.git | 27e32f53cd6cbe84287185a37124b24bd7664e03 |
+| <a name="module_docker_image"></a> [docker\_image](#module\_docker\_image) | git::https://github.com/terraform-aws-modules/terraform-aws-lambda.git//modules/docker-build | 9acd3227087db56abac5f78d1a660b08ee159a9c |
+| <a name="module_ecs"></a> [ecs](#module\_ecs) | git::https://github.com/terraform-aws-modules/terraform-aws-ecs.git | 2604124d05974c2ee47ff7194d62d55ac425a3cb |
+| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git//modules/vpc-endpoints | bf9a89bf447a9c866dc0d30486aec5a24dbe2631 |
+| <a name="module_load_balancer"></a> [load\_balancer](#module\_load\_balancer) | git::https://github.com/terraform-aws-modules/terraform-aws-alb.git | cb8e43d456a863e954f6b97a4a821f41d4280ab8 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git | bf9a89bf447a9c866dc0d30486aec5a24dbe2631 |
 
 ## Resources
 
