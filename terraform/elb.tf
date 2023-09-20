@@ -44,6 +44,7 @@ resource "aws_lb_listener_certificate" "load_balancer" {
 }
 
 resource "aws_security_group" "alb" {
+    #checkov:skip=CKV_AWS_5:Security group only created if ELB type is ALB, then is connected via module
   count = var.elb_type == "ALB" && var.external_alb_sg_id == null ?  1 : 0
 
   name   = "${local.name_prefix}_alb"

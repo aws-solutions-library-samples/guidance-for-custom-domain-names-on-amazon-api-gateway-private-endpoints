@@ -26,15 +26,24 @@ resource "random_string" "image_tag" {
   }
 }
 
-#tfsec:ignore:aws-ecr-repository-customer-key #ECR repository encrypted with default keys, end-user can adjust using customer managed KMS key if desired.
+resource "aws_ecr_repository" "nginx" {
+    #checkov:skip=CKV_AWS_136:Registry is encrypted, customers can create and implement KMS if desired.
+  name = "${local.name_prefix}_${random_string.repo_suffix.result}"
+  image_tag_mutability = "IMMUTABLE"
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+  force_delete = true
+  encryption_configuration {
+    encryption_type = "AES256"
+  }
+}
+
 module "docker_image" {
   source               = "git::https://github.com/terraform-aws-modules/terraform-aws-lambda.git//modules/docker-build?ref=9acd3227087db56abac5f78d1a660b08ee159a9c"
-  create_ecr_repo      = true
-  ecr_repo             = "${local.name_prefix}_${random_string.repo_suffix.result}"
-  ecr_force_delete     = true
+  create_ecr_repo      = false
+  ecr_repo             = aws_ecr_repository.nginx.name
   source_path          = "${path.module}/docker"
-  image_tag_mutability = "IMMUTABLE"
-  scan_on_push         = true
   image_tag            = random_string.image_tag.result
   build_args = {
     PLATFORM = var.task_platform == "ARM64" ? "linux/arm64" : "linux/amd64"
@@ -43,10 +52,8 @@ module "docker_image" {
 }
 
 resource "aws_ecr_repository_policy" "ecr_policy" {
-  depends_on = [
-    module.docker_image
-  ]
-  repository = "${local.name_prefix}_${random_string.repo_suffix.result}"
+
+  repository = aws_ecr_repository.nginx.name
 
   policy = jsonencode({
     Version = "2012-10-17"

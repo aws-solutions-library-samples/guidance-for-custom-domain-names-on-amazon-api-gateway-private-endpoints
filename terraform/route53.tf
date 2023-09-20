@@ -53,6 +53,25 @@ resource "aws_kms_key" "private" {
         Resource = "*"
         Sid      = "Enable IAM User Permissions"
       },
+      {
+        Action = [
+                "kms:Encrypt*",
+                "kms:Decrypt*",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+                "kms:Describe*"
+        ]
+        Effect = "Allow"
+        Principal = {
+          Service = "logs.${data.aws_region.current.name}.amazonaws.com"
+        }
+        Resource = "*"
+        Condition = {
+          ArnEquals = {
+            "kms:EncryptionContext:aws:logs:arn": "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/route53/*"
+          }
+        }
+      }
     ]
     Version = "2012-10-17"
   })
@@ -74,10 +93,12 @@ resource "aws_route53_hosted_zone_dnssec" "private" {
 }
 
 resource "aws_cloudwatch_log_group" "aws_route53_private" {
+  #chov:skip=CKV_AWS_158:Customers can create and apply custom KMS keys if desired.
   for_each = local.base_domains
 
   name              = "/aws/route53/${each.value}"
-  retention_in_days = 30
+  retention_in_days = 365
+  kms_key_id = aws_kms_key.private.key_id
 }
 
 # Example CloudWatch log resource policy to allow Route53 to write logs
@@ -102,4 +123,11 @@ data "aws_iam_policy_document" "route53-query-logging-policy" {
 resource "aws_cloudwatch_log_resource_policy" "route53-query-logging-policy" {
   policy_document = data.aws_iam_policy_document.route53-query-logging-policy.json
   policy_name     = "route53-query-logging-policy"
+}
+
+resource "aws_route53_query_log" "private" {
+  depends_on = [aws_cloudwatch_log_resource_policy.route53-query-logging-policy]
+  for_each = aws_cloudwatch_log_group.aws_route53_private
+  cloudwatch_log_group_arn = aws_cloudwatch_log_group.aws_route53_private[each.value].arn
+  zone_id                  = aws_route53_zone.private[each.value].zone_id
 }

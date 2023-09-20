@@ -48,6 +48,7 @@ module "endpoints" {
 
 
 resource "aws_security_group" "vpc_endpoints" {
+    #checkov:skip=CKV_AWS_5:Security group attached to endpoints via module
   count = var.external_endpoint_sg_id == null ? 1 : 0
   name        = "${local.name_prefix}_vpc_endpoints"
   description = "Ingress to Service Endpoints"

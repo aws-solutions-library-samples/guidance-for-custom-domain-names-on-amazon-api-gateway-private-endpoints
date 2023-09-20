@@ -8,7 +8,10 @@ RUN amazon-linux-extras install -y nginx1 \
     && yum clean all && \
     rm -rf /var/cache/yum
 
-ADD --chmod=500 entrypoint.sh /entrypoint.sh
-ADD --chmod=400 openssl.cnf /openssl.cnf
+COPY --chmod=500 entrypoint.sh /entrypoint.sh
+COPY --chmod=400 openssl.cnf /openssl.cnf
 
+USER daemon
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "curl --fail --insecure https://localhost || exit 1" ]
 ENTRYPOINT [ "/entrypoint.sh" ]

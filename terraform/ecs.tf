@@ -1,4 +1,5 @@
 resource "aws_security_group" "fg" {
+      #checkov:skip=CKV_AWS_5:Security group only created if an external is not provided, then is connected via module
   count = var.external_fargate_sg_id == null ? 1 : 0
   name        = "${local.name_prefix}_fg"
   vpc_id      = data.aws_vpc.selected.id
