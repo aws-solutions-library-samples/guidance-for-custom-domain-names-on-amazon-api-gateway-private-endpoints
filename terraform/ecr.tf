@@ -35,6 +35,7 @@ resource "aws_ecr_repository" "nginx" {
   }
   force_delete = true
   encryption_configuration {
+    #tfsec:ignore:aws-ecr-repository-customer-key Customers can implement KMS if desired
     encryption_type = "AES256"
   }
 }
