@@ -108,9 +108,15 @@ resource "aws_ecs_task_definition" "app" {
       image  = docker_registry_image.nginx.name
       memory = 1024
       name   = local.service_name
+      essential = true
       healthcheck = {
         command = ["CMD-SHELL", "curl --cacert /cert.pem https://localhost || exit 1"]
+        interval = 30
+        retries = 3
+        timeout = 5
       }
+      mountPoints = []
+      volumesFrom = []
       networkMode = "awsvpc"
       environment = [
         {
