@@ -414,7 +414,10 @@ override.tf.json
 terraform.rc
 
 # Ignore locally generated files
-config/*.yaml
+!config/.empty
+config/*
+!outputs/.empty
+outputs/*
 tfsec-checksums.txt
 tfsec-linux-amd64
 ignore

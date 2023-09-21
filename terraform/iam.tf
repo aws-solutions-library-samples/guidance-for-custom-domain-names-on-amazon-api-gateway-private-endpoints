@@ -3,7 +3,7 @@ data "aws_iam_policy" "ecs" {
 }
 
 resource "aws_iam_role" "ecs_service" {
-  name = "${local.name_prefix}_ecs_service"
+  name = "${local.name_prefix}_ecs_${random_id.id.hex}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -22,7 +22,7 @@ resource "aws_iam_role" "ecs_service" {
 }
 
 resource "aws_iam_role" "fargate_task" {
-  name = "${local.name_prefix}_fargate_task"
+  name = "${local.name_prefix}_fargate_${random_id.id.hex}"
   assume_role_policy = jsonencode(
     {
       Version = "2012-10-17"
@@ -42,7 +42,7 @@ resource "aws_iam_role" "fargate_task" {
 }
 
 resource "aws_iam_policy" "ecs_service" {
-  name = "${local.name_prefix}_ecs_service"
+  name = "${local.name_prefix}_ecs_${random_id.id.hex}"
   policy = jsonencode(
     {
       Version = "2012-10-17"
@@ -52,7 +52,7 @@ resource "aws_iam_policy" "ecs_service" {
           Action = [
             "logs:CreateLogGroup"
           ]
-          Resource = "arn:${data.aws_partition.current.id}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/ecs/${local.service_name}:*"
+          Resource = "arn:${data.aws_partition.current.id}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/ecs/${local.service_name}-${random_id.id.hex}:*"
         }
       ]
     }
@@ -60,7 +60,7 @@ resource "aws_iam_policy" "ecs_service" {
 }
 
 resource "aws_iam_policy" "fargate_task" {
-  name = "${local.name_prefix}_fargate_task"
+  name = "${local.name_prefix}_fargate_${random_id.id.hex}"
   policy = jsonencode(
     {
       Version = "2012-10-17"
