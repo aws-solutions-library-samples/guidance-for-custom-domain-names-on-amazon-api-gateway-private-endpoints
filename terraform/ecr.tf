@@ -21,6 +21,7 @@ resource "random_id" "image_tag" {
   }
 }
 
+#tfsec:ignore:aws-ecr-repository-customer-key #Repository is encrypted, customers can deploy customer managed keys if desired.
 resource "aws_ecr_repository" "nginx" {
   name                 = "${local.name_prefix}-${random_id.id.hex}"
   force_delete         = true
@@ -29,7 +30,7 @@ resource "aws_ecr_repository" "nginx" {
     scan_on_push = true
   }
   encryption_configuration {
-    encryption_type = "KMS"
+    encryption_type = "AES256"
   }
 }
 

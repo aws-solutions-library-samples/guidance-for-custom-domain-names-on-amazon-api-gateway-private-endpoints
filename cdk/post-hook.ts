@@ -5,6 +5,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import * as yaml from 'js-yaml';
 import { parse } from 'ts-command-line-args';
 import { proxyDomain } from './bin/Main';
+import { exit } from 'process';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -82,7 +83,9 @@ const GenerateOutputsFile = (props: IArguments, proxyDomains: proxyDomain[]): vo
     // outputObj.APIS = arrApis
     outputObj.API_RESOURCE_POLICY_MAPPING = arrPolicyMappings;
 
-    // console.log(`path.parse(props.destinationPath).dir-->${path.parse(props.destinationPath).dir}`);
+    if (props.destinationPath.indexOf('\0') !== -1) {
+        return process.exit(1);
+    }
     mkdirSync(path.parse(props.destinationPath).dir, { recursive: true });
     writeFileSync(props.destinationPath, JSON.stringify(outputObj, null, 2));
 

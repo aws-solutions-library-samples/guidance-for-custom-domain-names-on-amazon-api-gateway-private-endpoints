@@ -118,11 +118,20 @@ export class RoutingConstruct extends Construct {
                 protocol: alb.Protocol.TLS,
                 targetType: alb.TargetType.IP,
                 healthCheck: {
-                    interval: cdk.Duration.seconds(10),
+                    path: '/',
+                    timeout: cdk.Duration.seconds(2),
+                    interval: cdk.Duration.seconds(5),
+                    healthyThresholdCount: 2,
+                    unhealthyThresholdCount: 2,
+                    protocol: alb.Protocol.HTTPS,
                 },
             });
             networkTargetGroupHttps.configureHealthCheck({
                 path: '/',
+                timeout: cdk.Duration.seconds(2),
+                interval: cdk.Duration.seconds(5),
+                healthyThresholdCount: 2,
+                unhealthyThresholdCount: 2,
                 protocol: alb.Protocol.HTTPS,
             });
             const nlbListener = networkLoadBalancer.addListener(`${stackName}-nlb-listener`, {

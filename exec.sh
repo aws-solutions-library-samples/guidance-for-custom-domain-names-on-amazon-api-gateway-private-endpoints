@@ -25,6 +25,11 @@ optional args:
   --auto-approve <add this arg to auto-approve terraform apply or destroy>
   --configure-backend (local|remote) <add this arg to configure terraform state location [defaults to local]>
 "
+# Verify aws cli version > 2
+if ! aws --version 2>&1 | grep -q "aws-cli\/2."; then
+	echo "AWS CLI version 2.x is required."
+	exit 1
+fi
 
 # Set global vars
 src_dir="${PWD}"

@@ -171,7 +171,7 @@ resource "aws_ecs_service" "nginx" {
   scheduling_strategy    = "REPLICA"
   desired_count          = 1
   force_new_deployment   = true
-  enable_execute_command = true
+  enable_execute_command = false
   deployment_circuit_breaker {
     enable   = true
     rollback = true
