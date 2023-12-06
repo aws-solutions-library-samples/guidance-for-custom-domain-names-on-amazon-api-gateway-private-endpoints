@@ -138,6 +138,9 @@ export class FargateServiceConstruct extends Construct {
         const apiGatewayVPCInterfaceEndpointDNSName = objCustomResource.getAtt('Result').toString();
 
         // The docker container including the image to use
+        if (props.taskImage === 'latest') {
+            throw new Error('Using the latest tag for container images introduces security and reliability issues, please provide a specific tag.');
+        }
         const fgContainer = new ecs.ContainerDefinition(this, `${stackName}-container-def`, {
             taskDefinition: taskDefinition,
             memoryLimitMiB: 1024,

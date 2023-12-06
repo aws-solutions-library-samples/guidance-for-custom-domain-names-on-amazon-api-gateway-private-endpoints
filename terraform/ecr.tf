@@ -30,7 +30,8 @@ resource "aws_ecr_repository" "nginx" {
     scan_on_push = true
   }
   encryption_configuration {
-    encryption_type = "AES256"
+    #checkov:skip=CKV_AWS_136:The repository is encrypted, customers can deploy customer managed keys if desired.
+    encryption_type = "KMS"
   }
 }
 

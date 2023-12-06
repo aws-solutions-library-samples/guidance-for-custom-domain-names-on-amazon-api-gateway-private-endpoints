@@ -1,5 +1,6 @@
 resource "aws_security_group" "fg" {
   count       = var.external_fargate_sg_id == null ? 1 : 0
+  #checkov:skip=CKV2_AWS_5:Security groups are attached conditionally if an external security group is not provided
   name        = "${local.name_prefix}_fg"
   vpc_id      = data.aws_vpc.selected.id
   description = "Egress from Fargate"
@@ -48,8 +49,7 @@ resource "aws_security_group_rule" "fg_ingress" {
 }
 
 module "ecs" {
-  source  = "terraform-aws-modules/ecs/aws"
-  version = ">=4.1.1"
+  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs?ref=32f1169f8fd2f1beb224a0b0f040d8825eb01c05"
 
   cluster_name = local.name_prefix
   fargate_capacity_providers = {
