@@ -1,12 +1,44 @@
-module "load_balancer" {
-  source = "git::https://github.com/terraform-aws-modules/terraform-aws-alb?ref=cb8e43d456a863e954f6b97a4a821f41d4280ab8"
+module "elb_bucket" {
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket?ref=7263d096e3386493dc5113ad61ad0670e6c99028"
 
-  name               = local.name_prefix
-  load_balancer_type = var.elb_type == "ALB" ? "application" : "network"
-  vpc_id             = data.aws_vpc.selected.id
-  internal           = true
-  subnets            = local.private_subnets
-  security_groups    = var.elb_type == "ALB" ? [local.alb_sg_id] : null
+  bucket_prefix       = "${local.name_prefix}-elb-logs"
+  force_destroy       = true
+  block_public_policy = true
+  lifecycle_rule = [
+    {
+      id      = "expire-elb-logs"
+      enabled = true
+      expiration = {
+        days = 30
+      }
+    }
+  ]
+  versioning = {
+    enabled = true
+  }
+
+}
+
+resource "aws_s3_bucket_policy" "elb_bucket_policy" {
+  bucket = module.elb_bucket.s3_bucket_id
+  policy = var.elb_type == "ALB" ? data.aws_iam_policy_document.alb_access_log_policy.json : data.aws_iam_policy_document.nlb_access_log_policy.json
+
+}
+
+module "load_balancer" {
+  source     = "git::https://github.com/terraform-aws-modules/terraform-aws-alb?ref=cb8e43d456a863e954f6b97a4a821f41d4280ab8"
+  depends_on = [aws_s3_bucket_policy.elb_bucket_policy]
+
+  name                             = local.name_prefix
+  load_balancer_type               = var.elb_type == "ALB" ? "application" : "network"
+  vpc_id                           = data.aws_vpc.selected.id
+  internal                         = true
+  subnets                          = local.private_subnets
+  security_groups                  = var.elb_type == "ALB" ? [local.alb_sg_id] : null
+  enable_cross_zone_load_balancing = true
+  access_logs = {
+    bucket = module.elb_bucket.s3_bucket_id
+  }
   target_groups = [
     {
       name_prefix      = length(local.name_prefix) > 6 ? substr(local.name_prefix, 0, 6) : local.name_prefix

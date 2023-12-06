@@ -4,9 +4,8 @@ ARG IMAGE
 #checkov:skip=CKV_DOCKER_7: latest tag is disallowed at the terraform variable level
 FROM --platform=${PLATFORM} ${IMAGE}
 
-RUN amazon-linux-extras install -y nginx1 \
-    && yum update -y \
-    && yum install -y openssl \
+RUN yum update -y \
+    && yum install -y nginx openssl \
     && yum clean all && \
     rm -rf /var/cache/yum
 

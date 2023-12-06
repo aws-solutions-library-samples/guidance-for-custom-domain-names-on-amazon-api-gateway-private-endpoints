@@ -53,6 +53,13 @@ resource "aws_iam_policy" "ecs_service" {
             "logs:CreateLogGroup"
           ]
           Resource = "arn:${data.aws_partition.current.id}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/ecs/${local.service_name}-${random_id.id.hex}:*"
+        },
+        {
+          Effect = "Allow"
+          Action = [
+            "ssm:GetParameters"
+          ]
+          Resource = aws_ssm_parameter.nginx_config.arn
         }
       ]
     }
@@ -95,4 +102,63 @@ resource "aws_iam_role_policy_attachment" "fargate_task_managed_policy" {
 resource "aws_iam_role_policy_attachment" "fargate_task" {
   role       = aws_iam_role.fargate_task.name
   policy_arn = aws_iam_policy.fargate_task.arn
+}
+
+data "aws_iam_policy_document" "nlb_access_log_policy" {
+  statement {
+    sid    = "AWSLogDeliveryAclCheck"
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["delivery.logs.amazonaws.com"]
+    }
+    actions   = ["s3:GetBucketAcl"]
+    resources = [module.elb_bucket.s3_bucket_arn]
+    condition {
+      test     = "StringEquals"
+      variable = "aws:SourceAccount"
+      values   = [data.aws_caller_identity.current.account_id]
+    }
+  }
+  statement {
+    sid    = "AWSLogDeliveryWrite"
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["delivery.logs.amazonaws.com"]
+    }
+    actions   = ["s3:PutObject"]
+    resources = ["${module.elb_bucket.s3_bucket_arn}/*"]
+    condition {
+      test     = "StringEquals"
+      variable = "s3:x-amz-acl"
+      values   = ["bucket-owner-full-control"]
+    }
+    condition {
+      test     = "StringEquals"
+      variable = "aws:SourceAccount"
+      values   = [data.aws_caller_identity.current.account_id]
+    }
+    condition {
+      test     = "ArnLike"
+      variable = "aws:SourceArn"
+      values   = ["arn:${data.aws_partition.current.id}:logs:${data.aws_region.current.id}:${data.aws_caller_identity.current.account_id}:*"]
+    }
+
+  }
+}
+
+data "aws_iam_policy_document" "alb_access_log_policy" {
+  statement {
+    sid       = "AWSLogDelivery"
+    effect    = "Allow"
+    actions   = ["s3:PubObject"]
+    resources = ["${module.elb_bucket.s3_bucket_arn}/*"]
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:${data.aws_partition.current.id}:iam::${data.aws_caller_identity.current.account_id}:root"]
+    }
+  }
 }

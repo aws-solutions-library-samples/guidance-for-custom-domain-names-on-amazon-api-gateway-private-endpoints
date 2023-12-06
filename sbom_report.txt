@@ -1,0 +1,5432 @@
+
+        Probe Software Bill of Materials report
+
+        Total findings: 904
+
+        ======================
+
+        
+            Package name: @aashutoshrathi/word-wrap
+            Package version: 1.2.6
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-cdk/asset-awscli-v1
+            Package version: 2.2.201
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-cdk/asset-kubectl-v20
+            Package version: 2.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-cdk/asset-node-proxy-agent-v6
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-crypto/crc32
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-crypto/ie11-detection
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-crypto/sha256-browser
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-crypto/sha256-js
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-crypto/supports-web-crypto
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-crypto/util
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/client-ec2
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/client-route-53
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/client-sso
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/client-sts
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/core
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/credential-provider-env
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/credential-provider-ini
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/credential-provider-node
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/credential-provider-process
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/credential-provider-sso
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/credential-provider-web-identity
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-host-header
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-logger
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-recursion-detection
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-sdk-ec2
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-sdk-route53
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-sdk-sts
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-signing
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/middleware-user-agent
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/region-config-resolver
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/token-providers
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/types
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/util-endpoints
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/util-format-url
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/util-locate-window
+            Package version: 3.465.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/util-user-agent-browser
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/util-user-agent-node
+            Package version: 3.468.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/util-utf8-browser
+            Package version: 3.259.0
+            Package type: npm
+            -----
+
+            
+            Package name: @aws-sdk/xml-builder
+            Package version: 3.465.0
+            Package type: npm
+            -----
+
+            
+            Package name: @babel/code-frame
+            Package version: 7.23.5
+            Package type: npm
+            -----
+
+            
+            Package name: @babel/helper-validator-identifier
+            Package version: 7.22.20
+            Package type: npm
+            -----
+
+            
+            Package name: @babel/highlight
+            Package version: 7.23.4
+            Package type: npm
+            -----
+
+            
+            Package name: @balena/dockerignore
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: @cspotcode/source-map-support
+            Package version: 0.8.1
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/android-arm
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/android-arm64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/android-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/darwin-arm64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/darwin-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/freebsd-arm64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/freebsd-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-arm
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-arm64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-ia32
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-loong64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-mips64el
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-ppc64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-riscv64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-s390x
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/linux-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/netbsd-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/openbsd-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/sunos-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/win32-arm64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/win32-ia32
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @esbuild/win32-x64
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: @eslint-community/eslint-utils
+            Package version: 4.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: @eslint-community/regexpp
+            Package version: 4.10.0
+            Package type: npm
+            -----
+
+            
+            Package name: @eslint/eslintrc
+            Package version: 2.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: @eslint/js
+            Package version: 8.55.0
+            Package type: npm
+            -----
+
+            
+            Package name: @humanwhocodes/config-array
+            Package version: 0.11.13
+            Package type: npm
+            -----
+
+            
+            Package name: @humanwhocodes/module-importer
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: @humanwhocodes/object-schema
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: @jest/expect-utils
+            Package version: 29.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: @jest/schemas
+            Package version: 29.6.3
+            Package type: npm
+            -----
+
+            
+            Package name: @jest/types
+            Package version: 29.6.3
+            Package type: npm
+            -----
+
+            
+            Package name: @jridgewell/resolve-uri
+            Package version: 3.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: @jridgewell/sourcemap-codec
+            Package version: 1.4.15
+            Package type: npm
+            -----
+
+            
+            Package name: @jridgewell/trace-mapping
+            Package version: 0.3.9
+            Package type: npm
+            -----
+
+            
+            Package name: @nodelib/fs.scandir
+            Package version: 2.1.5
+            Package type: npm
+            -----
+
+            
+            Package name: @nodelib/fs.stat
+            Package version: 2.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: @nodelib/fs.walk
+            Package version: 1.2.8
+            Package type: npm
+            -----
+
+            
+            Package name: @pkgr/utils
+            Package version: 2.4.2
+            Package type: npm
+            -----
+
+            
+            Package name: @sinclair/typebox
+            Package version: 0.27.8
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/abort-controller
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/config-resolver
+            Package version: 2.0.21
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/credential-provider-imds
+            Package version: 2.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/eventstream-codec
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/fetch-http-handler
+            Package version: 2.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/hash-node
+            Package version: 2.0.17
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/invalid-dependency
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/is-array-buffer
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/middleware-content-length
+            Package version: 2.0.17
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/middleware-endpoint
+            Package version: 2.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/middleware-retry
+            Package version: 2.0.24
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/middleware-serde
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/middleware-stack
+            Package version: 2.0.9
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/node-config-provider
+            Package version: 2.1.8
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/node-http-handler
+            Package version: 2.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/property-provider
+            Package version: 2.0.16
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/protocol-http
+            Package version: 3.0.11
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/querystring-builder
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/querystring-parser
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/service-error-classification
+            Package version: 2.0.8
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/shared-ini-file-loader
+            Package version: 2.2.7
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/signature-v4
+            Package version: 2.0.17
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/smithy-client
+            Package version: 2.1.18
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/types
+            Package version: 2.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/url-parser
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-base64
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-body-length-browser
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-body-length-node
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-buffer-from
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-config-provider
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-defaults-mode-browser
+            Package version: 2.0.22
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-defaults-mode-node
+            Package version: 2.0.29
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-endpoints
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-hex-encoding
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-middleware
+            Package version: 2.0.8
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-retry
+            Package version: 2.0.8
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-stream
+            Package version: 2.0.23
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-uri-escape
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-utf8
+            Package version: 2.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: @smithy/util-waiter
+            Package version: 2.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @tsconfig/node10
+            Package version: 1.0.9
+            Package type: npm
+            -----
+
+            
+            Package name: @tsconfig/node12
+            Package version: 1.0.11
+            Package type: npm
+            -----
+
+            
+            Package name: @tsconfig/node14
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: @tsconfig/node16
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: @types/args
+            Package version: 5.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: @types/aws-lambda
+            Package version: 8.10.130
+            Package type: npm
+            -----
+
+            
+            Package name: @types/extract-domain
+            Package version: 2.3.3
+            Package type: npm
+            -----
+
+            
+            Package name: @types/istanbul-lib-coverage
+            Package version: 2.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: @types/istanbul-lib-report
+            Package version: 3.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: @types/istanbul-reports
+            Package version: 3.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: @types/jest
+            Package version: 29.5.11
+            Package type: npm
+            -----
+
+            
+            Package name: @types/js-yaml
+            Package version: 4.0.9
+            Package type: npm
+            -----
+
+            
+            Package name: @types/json-schema
+            Package version: 7.0.15
+            Package type: npm
+            -----
+
+            
+            Package name: @types/json5
+            Package version: 0.0.29
+            Package type: npm
+            -----
+
+            
+            Package name: @types/node
+            Package version: 10.17.27
+            Package type: npm
+            -----
+
+            
+            Package name: @types/prettier
+            Package version: 2.7.3
+            Package type: npm
+            -----
+
+            
+            Package name: @types/semver
+            Package version: 7.5.6
+            Package type: npm
+            -----
+
+            
+            Package name: @types/stack-utils
+            Package version: 2.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: @types/string-hash
+            Package version: 1.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: @types/yargs
+            Package version: 17.0.32
+            Package type: npm
+            -----
+
+            
+            Package name: @types/yargs-parser
+            Package version: 21.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/eslint-plugin
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/parser
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/scope-manager
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/type-utils
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/types
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/typescript-estree
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/utils
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @typescript-eslint/visitor-keys
+            Package version: 6.13.2
+            Package type: npm
+            -----
+
+            
+            Package name: @ungap/structured-clone
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: JSONStream
+            Package version: 1.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: abbrev
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: acorn
+            Package version: 8.11.2
+            Package type: npm
+            -----
+
+            
+            Package name: acorn-jsx
+            Package version: 5.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: acorn-walk
+            Package version: 8.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: agent-base
+            Package version: 4.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: agentkeepalive
+            Package version: 3.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: ajv
+            Package version: 4.11.8
+            Package type: npm
+            -----
+
+            
+            Package name: ajv
+            Package version: 6.12.6
+            Package type: npm
+            -----
+
+            
+            Package name: ajv
+            Package version: 8.12.0
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-align
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-regex
+            Package version: 2.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-regex
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-regex
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-regex
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-styles
+            Package version: 2.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-styles
+            Package version: 3.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-styles
+            Package version: 3.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-styles
+            Package version: 4.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-styles
+            Package version: 4.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: ansi-styles
+            Package version: 5.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: ansicolors
+            Package version: 0.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: ansistyles
+            Package version: 0.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: aproba
+            Package version: 1.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: archy
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: are-we-there-yet
+            Package version: 1.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: arg
+            Package version: 4.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: argparse
+            Package version: 1.0.10
+            Package type: npm
+            -----
+
+            
+            Package name: argparse
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: array-back
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: array-back
+            Package version: 4.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: array-buffer-byte-length
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: array-includes
+            Package version: 3.1.7
+            Package type: npm
+            -----
+
+            
+            Package name: array-union
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: array.prototype.findlastindex
+            Package version: 1.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: array.prototype.flat
+            Package version: 1.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: array.prototype.flatmap
+            Package version: 1.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: arraybuffer.prototype.slice
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: asap
+            Package version: 2.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: asn1
+            Package version: 0.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: assert-plus
+            Package version: 0.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: assert-plus
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: astral-regex
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: asynckit
+            Package version: 0.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: available-typed-arrays
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: aws-cdk
+            Package version: 2.114.1
+            Package type: npm
+            -----
+
+            
+            Package name: aws-cdk-lib
+            Package version: 2.114.1
+            Package type: npm
+            -----
+
+            
+            Package name: aws-lambda
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: aws-sdk
+            Package version: 2.1513.0
+            Package type: npm
+            -----
+
+            
+            Package name: aws-sign2
+            Package version: 0.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: aws4
+            Package version: 1.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: balanced-match
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: balanced-match
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: balanced-match
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: base64-js
+            Package version: 1.5.1
+            Package type: npm
+            -----
+
+            
+            Package name: bcrypt-pbkdf
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: big-integer
+            Package version: 1.6.52
+            Package type: npm
+            -----
+
+            
+            Package name: bl
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: block-stream
+            Package version: 0.0.9
+            Package type: npm
+            -----
+
+            
+            Package name: bluebird
+            Package version: 3.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: boom
+            Package version: 2.10.1
+            Package type: npm
+            -----
+
+            
+            Package name: bowser
+            Package version: 2.11.0
+            Package type: npm
+            -----
+
+            
+            Package name: boxen
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: boxen
+            Package version: 1.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: bplist-parser
+            Package version: 0.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: brace-expansion
+            Package version: 1.1.11
+            Package type: npm
+            -----
+
+            
+            Package name: brace-expansion
+            Package version: 1.1.11
+            Package type: npm
+            -----
+
+            
+            Package name: brace-expansion
+            Package version: 1.1.8
+            Package type: npm
+            -----
+
+            
+            Package name: braces
+            Package version: 3.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: buffer
+            Package version: 4.9.2
+            Package type: npm
+            -----
+
+            
+            Package name: buffer-from
+            Package version: 1.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: builtin-modules
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: builtin-modules
+            Package version: 3.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: builtins
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: builtins
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: bundle-name
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: cacache
+            Package version: 9.2.9
+            Package type: npm
+            -----
+
+            
+            Package name: call-bind
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: call-limit
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: callsites
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: camelcase
+            Package version: 4.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: capture-stack-trace
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: capture-stack-trace
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: case
+            Package version: 1.6.3
+            Package type: npm
+            -----
+
+            
+            Package name: caseless
+            Package version: 0.12.0
+            Package type: npm
+            -----
+
+            
+            Package name: cdk-nag
+            Package version: 2.27.210
+            Package type: npm
+            -----
+
+            
+            Package name: chalk
+            Package version: 1.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: chalk
+            Package version: 2.4.2
+            Package type: npm
+            -----
+
+            
+            Package name: chalk
+            Package version: 2.4.2
+            Package type: npm
+            -----
+
+            
+            Package name: chalk
+            Package version: 4.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: chownr
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: ci-info
+            Package version: 1.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: ci-info
+            Package version: 3.9.0
+            Package type: npm
+            -----
+
+            
+            Package name: cli-boxes
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: cliui
+            Package version: 4.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: clone
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: clone-regexp
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: cmd-shim
+            Package version: 2.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: co
+            Package version: 4.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: code-point-at
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: color-convert
+            Package version: 1.9.3
+            Package type: npm
+            -----
+
+            
+            Package name: color-convert
+            Package version: 1.9.3
+            Package type: npm
+            -----
+
+            
+            Package name: color-convert
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: color-convert
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: color-name
+            Package version: 1.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: color-name
+            Package version: 1.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: color-name
+            Package version: 1.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: color-name
+            Package version: 1.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: columnify
+            Package version: 1.5.4
+            Package type: npm
+            -----
+
+            
+            Package name: combined-stream
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: command-line-args
+            Package version: 5.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: command-line-usage
+            Package version: 6.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: commander
+            Package version: 3.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: concat-map
+            Package version: 0.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: concat-map
+            Package version: 0.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: concat-stream
+            Package version: 1.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: config-chain
+            Package version: 1.1.11
+            Package type: npm
+            -----
+
+            
+            Package name: configstore
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: configstore
+            Package version: 3.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: console-control-strings
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: constructs
+            Package version: 10.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: convert-hrtime
+            Package version: 5.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: copy-concurrently
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: core-util-is
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: create-error-class
+            Package version: 3.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: create-require
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: cross-spawn
+            Package version: 5.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: cross-spawn
+            Package version: 6.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: cross-spawn
+            Package version: 7.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: cross-spawn-async
+            Package version: 2.2.5
+            Package type: npm
+            -----
+
+            
+            Package name: cryptiles
+            Package version: 2.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: crypto-random-string
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: cyclist
+            Package version: 0.2.2
+            Package type: npm
+            -----
+
+            
+            Package name: dashdash
+            Package version: 1.14.1
+            Package type: npm
+            -----
+
+            
+            Package name: data-uri-to-buffer
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: debug
+            Package version: 2.6.8
+            Package type: npm
+            -----
+
+            
+            Package name: debug
+            Package version: 3.2.7
+            Package type: npm
+            -----
+
+            
+            Package name: debug
+            Package version: 4.3.4
+            Package type: npm
+            -----
+
+            
+            Package name: debuglog
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: decamelize
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: deep-extend
+            Package version: 0.4.2
+            Package type: npm
+            -----
+
+            
+            Package name: deep-extend
+            Package version: 0.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: deep-extend
+            Package version: 0.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: deep-is
+            Package version: 0.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: default-browser
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: default-browser-id
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: defaults
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: define-data-property
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: define-lazy-prop
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: define-properties
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: delayed-stream
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: delegates
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: detect-indent
+            Package version: 5.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: dezalgo
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: diff
+            Package version: 4.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: diff-sequences
+            Package version: 29.6.3
+            Package type: npm
+            -----
+
+            
+            Package name: dir-glob
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: doctrine
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: doctrine
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: dot-prop
+            Package version: 4.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: dot-prop
+            Package version: 4.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: dotenv
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: duplexer3
+            Package version: 0.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: duplexify
+            Package version: 3.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: ecc-jsbn
+            Package version: 0.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: editor
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: emoji-regex
+            Package version: 8.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: encoding
+            Package version: 0.1.12
+            Package type: npm
+            -----
+
+            
+            Package name: end-of-stream
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: end-of-stream
+            Package version: 1.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: end-of-stream
+            Package version: 1.4.4
+            Package type: npm
+            -----
+
+            
+            Package name: err-code
+            Package version: 1.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: errno
+            Package version: 0.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: es-abstract
+            Package version: 1.22.3
+            Package type: npm
+            -----
+
+            
+            Package name: es-set-tostringtag
+            Package version: 2.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: es-shim-unscopables
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: es-to-primitive
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: es6-promise
+            Package version: 4.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: es6-promisify
+            Package version: 5.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: esbuild
+            Package version: 0.19.8
+            Package type: npm
+            -----
+
+            
+            Package name: escape-string-regexp
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: escape-string-regexp
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: escape-string-regexp
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: escape-string-regexp
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint
+            Package version: 8.55.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-compat-utils
+            Package version: 0.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-config-prettier
+            Package version: 9.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-config-standard
+            Package version: 17.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-config-standard-with-typescript
+            Package version: 40.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-import-resolver-node
+            Package version: 0.3.9
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-module-utils
+            Package version: 2.8.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-plugin-es-x
+            Package version: 7.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-plugin-import
+            Package version: 2.29.0
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-plugin-n
+            Package version: 16.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-plugin-prettier
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-plugin-promise
+            Package version: 6.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-scope
+            Package version: 7.2.2
+            Package type: npm
+            -----
+
+            
+            Package name: eslint-visitor-keys
+            Package version: 3.4.3
+            Package type: npm
+            -----
+
+            
+            Package name: espree
+            Package version: 9.6.1
+            Package type: npm
+            -----
+
+            
+            Package name: esprima
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: esquery
+            Package version: 1.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: esrecurse
+            Package version: 4.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: estraverse
+            Package version: 5.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: esutils
+            Package version: 2.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: events
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: execa
+            Package version: 0.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: execa
+            Package version: 0.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: execa
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: execa
+            Package version: 5.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: execa
+            Package version: 7.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: expect
+            Package version: 29.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: extend
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: extract-domain
+            Package version: 4.1.5
+            Package type: npm
+            -----
+
+            
+            Package name: extsprintf
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: fast-deep-equal
+            Package version: 3.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: fast-deep-equal
+            Package version: 3.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: fast-diff
+            Package version: 1.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: fast-glob
+            Package version: 3.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: fast-json-stable-stringify
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: fast-levenshtein
+            Package version: 2.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: fast-xml-parser
+            Package version: 4.2.5
+            Package type: npm
+            -----
+
+            
+            Package name: fastq
+            Package version: 1.15.0
+            Package type: npm
+            -----
+
+            
+            Package name: fetch-blob
+            Package version: 3.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: file-entry-cache
+            Package version: 6.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: fill-range
+            Package version: 7.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: find-replace
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: find-up
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: find-up
+            Package version: 5.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: flat-cache
+            Package version: 3.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: flatted
+            Package version: 3.2.9
+            Package type: npm
+            -----
+
+            
+            Package name: flush-write-stream
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: for-each
+            Package version: 0.3.3
+            Package type: npm
+            -----
+
+            
+            Package name: forever-agent
+            Package version: 0.6.1
+            Package type: npm
+            -----
+
+            
+            Package name: form-data
+            Package version: 2.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: formdata-polyfill
+            Package version: 4.0.10
+            Package type: npm
+            -----
+
+            
+            Package name: from2
+            Package version: 1.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: from2
+            Package version: 2.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: fs-extra
+            Package version: 11.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: fs-vacuum
+            Package version: 1.2.10
+            Package type: npm
+            -----
+
+            
+            Package name: fs-write-stream-atomic
+            Package version: 1.0.10
+            Package type: npm
+            -----
+
+            
+            Package name: fs.realpath
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: fs.realpath
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: fsevents
+            Package version: 2.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: fstream
+            Package version: 1.0.11
+            Package type: npm
+            -----
+
+            
+            Package name: fstream-ignore
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: fstream-npm
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: function-bind
+            Package version: 1.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: function-timeout
+            Package version: 0.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: function.prototype.name
+            Package version: 1.1.6
+            Package type: npm
+            -----
+
+            
+            Package name: functions-have-names
+            Package version: 1.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: gauge
+            Package version: 2.7.4
+            Package type: npm
+            -----
+
+            
+            Package name: genfun
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: get-caller-file
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: get-intrinsic
+            Package version: 1.2.2
+            Package type: npm
+            -----
+
+            
+            Package name: get-stream
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: get-stream
+            Package version: 4.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: get-stream
+            Package version: 6.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: get-symbol-description
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: get-tsconfig
+            Package version: 4.7.2
+            Package type: npm
+            -----
+
+            
+            Package name: getpass
+            Package version: 0.1.7
+            Package type: npm
+            -----
+
+            
+            Package name: glob
+            Package version: 7.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: glob
+            Package version: 7.1.6
+            Package type: npm
+            -----
+
+            
+            Package name: glob
+            Package version: 7.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: glob-parent
+            Package version: 5.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: glob-parent
+            Package version: 6.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: glob-to-regexp
+            Package version: 0.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: global-dirs
+            Package version: 0.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: globals
+            Package version: 13.23.0
+            Package type: npm
+            -----
+
+            
+            Package name: globalthis
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: globby
+            Package version: 11.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: gopd
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: got
+            Package version: 6.7.1
+            Package type: npm
+            -----
+
+            
+            Package name: graceful-fs
+            Package version: 4.1.11
+            Package type: npm
+            -----
+
+            
+            Package name: graceful-fs
+            Package version: 4.2.11
+            Package type: npm
+            -----
+
+            
+            Package name: graceful-fs
+            Package version: 4.2.11
+            Package type: npm
+            -----
+
+            
+            Package name: graceful-fs
+            Package version: 4.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: graphemer
+            Package version: 1.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: har-schema
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: har-validator
+            Package version: 4.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: has-ansi
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: has-bigints
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: has-flag
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: has-flag
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: has-flag
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: has-property-descriptors
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: has-proto
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: has-symbols
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: has-tostringtag
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: has-unicode
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: hasown
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: hawk
+            Package version: 3.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: hoek
+            Package version: 2.16.3
+            Package type: npm
+            -----
+
+            
+            Package name: hosted-git-info
+            Package version: 2.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: hosted-git-info
+            Package version: 2.8.5
+            Package type: npm
+            -----
+
+            
+            Package name: http-cache-semantics
+            Package version: 3.7.3
+            Package type: npm
+            -----
+
+            
+            Package name: http-proxy-agent
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: http-signature
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: https-proxy-agent
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: human-signals
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: human-signals
+            Package version: 4.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: humanize-ms
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: iconv-lite
+            Package version: 0.4.18
+            Package type: npm
+            -----
+
+            
+            Package name: ieee754
+            Package version: 1.1.13
+            Package type: npm
+            -----
+
+            
+            Package name: iferr
+            Package version: 0.1.5
+            Package type: npm
+            -----
+
+            
+            Package name: ignore
+            Package version: 5.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: ignore
+            Package version: 5.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: import-fresh
+            Package version: 3.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: import-lazy
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: imurmurhash
+            Package version: 0.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: imurmurhash
+            Package version: 0.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: inflight
+            Package version: 1.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: inflight
+            Package version: 1.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: inherits
+            Package version: 2.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: inherits
+            Package version: 2.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: inherits
+            Package version: 2.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: ini
+            Package version: 1.3.4
+            Package type: npm
+            -----
+
+            
+            Package name: ini
+            Package version: 1.3.5
+            Package type: npm
+            -----
+
+            
+            Package name: init-package-json
+            Package version: 1.10.1
+            Package type: npm
+            -----
+
+            
+            Package name: internal-slot
+            Package version: 1.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: invert-kv
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: ip
+            Package version: 1.1.5
+            Package type: npm
+            -----
+
+            
+            Package name: ip-regex
+            Package version: 5.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-arguments
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-array-buffer
+            Package version: 3.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: is-bigint
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: is-boolean-object
+            Package version: 1.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: is-builtin-module
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-builtin-module
+            Package version: 3.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-callable
+            Package version: 1.2.7
+            Package type: npm
+            -----
+
+            
+            Package name: is-ci
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-core-module
+            Package version: 2.13.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-date-object
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: is-docker
+            Package version: 2.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-docker
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-extglob
+            Package version: 2.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-fullwidth-code-point
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-fullwidth-code-point
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-fullwidth-code-point
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-generator-function
+            Package version: 1.0.10
+            Package type: npm
+            -----
+
+            
+            Package name: is-glob
+            Package version: 4.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: is-inside-container
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-installed-globally
+            Package version: 0.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-ip
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-negative-zero
+            Package version: 2.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: is-npm
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-number
+            Package version: 7.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-number-object
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: is-obj
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-path-inside
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-path-inside
+            Package version: 3.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: is-redirect
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-regex
+            Package version: 1.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: is-regexp
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-retry-allowed
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-retry-allowed
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-shared-array-buffer
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: is-stream
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-stream
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: is-stream
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-string
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: is-symbol
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: is-typed-array
+            Package version: 1.1.12
+            Package type: npm
+            -----
+
+            
+            Package name: is-typedarray
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: is-weakref
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: is-wsl
+            Package version: 2.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: isarray
+            Package version: 0.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: isarray
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: isarray
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: isarray
+            Package version: 2.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: isexe
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: isexe
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: isstream
+            Package version: 0.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: jest-diff
+            Package version: 29.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: jest-get-type
+            Package version: 29.6.3
+            Package type: npm
+            -----
+
+            
+            Package name: jest-matcher-utils
+            Package version: 29.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: jest-message-util
+            Package version: 29.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: jest-util
+            Package version: 29.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: jju
+            Package version: 1.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: jmespath
+            Package version: 0.16.0
+            Package type: npm
+            -----
+
+            
+            Package name: js-tokens
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: js-yaml
+            Package version: 3.14.1
+            Package type: npm
+            -----
+
+            
+            Package name: js-yaml
+            Package version: 4.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: jsbn
+            Package version: 0.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: json-buffer
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: json-parse-helpfulerror
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: json-schema
+            Package version: 0.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: json-schema-traverse
+            Package version: 0.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: json-schema-traverse
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: json-stable-stringify
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: json-stable-stringify-without-jsonify
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: json-stringify-safe
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: json5
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: jsonfile
+            Package version: 6.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: jsonify
+            Package version: 0.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: jsonparse
+            Package version: 1.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: jsonschema
+            Package version: 1.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: jsprim
+            Package version: 1.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: keyv
+            Package version: 4.5.4
+            Package type: npm
+            -----
+
+            
+            Package name: latest-version
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: lazy-property
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: lcid
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: levn
+            Package version: 0.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: libnpx
+            Package version: 10.2.2
+            Package type: npm
+            -----
+
+            
+            Package name: locate-path
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: locate-path
+            Package version: 6.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: lockfile
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._baseindexof
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._baseuniq
+            Package version: 4.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._bindcallback
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._cacheindexof
+            Package version: 3.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._createcache
+            Package version: 3.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._createset
+            Package version: 4.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._getnative
+            Package version: 3.9.1
+            Package type: npm
+            -----
+
+            
+            Package name: lodash._root
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.camelcase
+            Package version: 4.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.clonedeep
+            Package version: 4.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.merge
+            Package version: 4.6.2
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.restparam
+            Package version: 3.6.1
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.truncate
+            Package version: 4.4.2
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.union
+            Package version: 4.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.uniq
+            Package version: 4.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: lodash.without
+            Package version: 4.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: lowercase-keys
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: lowercase-keys
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: lru-cache
+            Package version: 4.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: lru-cache
+            Package version: 4.1.5
+            Package type: npm
+            -----
+
+            
+            Package name: lru-cache
+            Package version: 6.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: lru-cache
+            Package version: 6.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: make-dir
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: make-dir
+            Package version: 1.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: make-error
+            Package version: 1.3.6
+            Package type: npm
+            -----
+
+            
+            Package name: make-fetch-happen
+            Package version: 2.4.13
+            Package type: npm
+            -----
+
+            
+            Package name: map-age-cleaner
+            Package version: 0.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: mem
+            Package version: 4.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: merge-stream
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: merge2
+            Package version: 1.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: micromatch
+            Package version: 4.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: mime-db
+            Package version: 1.27.0
+            Package type: npm
+            -----
+
+            
+            Package name: mime-types
+            Package version: 2.1.15
+            Package type: npm
+            -----
+
+            
+            Package name: mimic-fn
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: mimic-fn
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: mimic-fn
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: minimatch
+            Package version: 3.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: minimatch
+            Package version: 3.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: minimatch
+            Package version: 3.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: minimist
+            Package version: 0.0.8
+            Package type: npm
+            -----
+
+            
+            Package name: minimist
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: minimist
+            Package version: 1.2.8
+            Package type: npm
+            -----
+
+            
+            Package name: mississippi
+            Package version: 1.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: mkdirp
+            Package version: 0.5.1
+            Package type: npm
+            -----
+
+            
+            Package name: move-concurrently
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: ms
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: ms
+            Package version: 2.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: mute-stream
+            Package version: 0.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: natural-compare
+            Package version: 1.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: nice-try
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: node-domexception
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: node-fetch
+            Package version: 3.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: node-fetch-npm
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: node-gyp
+            Package version: 3.6.2
+            Package type: npm
+            -----
+
+            
+            Package name: nopt
+            Package version: 3.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: nopt
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: normalize-package-data
+            Package version: 2.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: npm
+            Package version: 5.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: npm-cache-filename
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: npm-install-checks
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: npm-package-arg
+            Package version: 5.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: npm-package-arg
+            Package version: 6.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: npm-pick-manifest
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: npm-registry-client
+            Package version: 8.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: npm-run-path
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: npm-run-path
+            Package version: 2.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: npm-run-path
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: npm-run-path
+            Package version: 5.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: npm-user-validate
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: npmlog
+            Package version: 4.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: npx
+            Package version: 10.2.2
+            Package type: npm
+            -----
+
+            
+            Package name: number-is-nan
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: oauth-sign
+            Package version: 0.8.2
+            Package type: npm
+            -----
+
+            
+            Package name: object-assign
+            Package version: 4.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: object-inspect
+            Package version: 1.13.1
+            Package type: npm
+            -----
+
+            
+            Package name: object-keys
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: object.assign
+            Package version: 4.1.5
+            Package type: npm
+            -----
+
+            
+            Package name: object.fromentries
+            Package version: 2.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: object.groupby
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: object.values
+            Package version: 1.1.7
+            Package type: npm
+            -----
+
+            
+            Package name: once
+            Package version: 1.3.3
+            Package type: npm
+            -----
+
+            
+            Package name: once
+            Package version: 1.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: once
+            Package version: 1.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: onetime
+            Package version: 5.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: onetime
+            Package version: 6.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: open
+            Package version: 9.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: opener
+            Package version: 1.4.3
+            Package type: npm
+            -----
+
+            
+            Package name: optionator
+            Package version: 0.9.3
+            Package type: npm
+            -----
+
+            
+            Package name: os-homedir
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: os-locale
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: os-tmpdir
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: osenv
+            Package version: 0.1.4
+            Package type: npm
+            -----
+
+            
+            Package name: osenv
+            Package version: 0.1.5
+            Package type: npm
+            -----
+
+            
+            Package name: p-defer
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: p-finally
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: p-is-promise
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: p-limit
+            Package version: 1.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: p-limit
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: p-locate
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: p-locate
+            Package version: 5.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: p-try
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: package-json
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: pacote
+            Package version: 2.7.38
+            Package type: npm
+            -----
+
+            
+            Package name: parallel-transform
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: parent-module
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: parse-domain
+            Package version: 8.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: path-exists
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: path-exists
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: path-is-absolute
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: path-is-absolute
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: path-is-inside
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: path-key
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: path-key
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: path-key
+            Package version: 3.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: path-key
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: path-parse
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: path-type
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: performance-now
+            Package version: 0.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: picocolors
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: picomatch
+            Package version: 2.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: pify
+            Package version: 2.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: pify
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: prelude-ls
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: prepend-http
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: prettier
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: prettier-linter-helpers
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: pretty-format
+            Package version: 29.7.0
+            Package type: npm
+            -----
+
+            
+            Package name: process-nextick-args
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: promise-inflight
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: promise-retry
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: promzard
+            Package version: 0.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: proto-list
+            Package version: 1.2.4
+            Package type: npm
+            -----
+
+            
+            Package name: protoduck
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: proxy-service
+            Package version: 0.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: prr
+            Package version: 0.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: pseudomap
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: pump
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: pump
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: pumpify
+            Package version: 1.3.5
+            Package type: npm
+            -----
+
+            
+            Package name: punycode
+            Package version: 1.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: punycode
+            Package version: 1.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: punycode
+            Package version: 2.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: punycode
+            Package version: 2.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: qs
+            Package version: 6.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: querystring
+            Package version: 0.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: queue-microtask
+            Package version: 1.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: rc
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: rc
+            Package version: 1.2.8
+            Package type: npm
+            -----
+
+            
+            Package name: react-is
+            Package version: 18.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: read
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: read-cmd-shim
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: read-installed
+            Package version: 4.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: read-package-json
+            Package version: 2.0.9
+            Package type: npm
+            -----
+
+            
+            Package name: read-package-tree
+            Package version: 5.1.6
+            Package type: npm
+            -----
+
+            
+            Package name: readable-stream
+            Package version: 1.1.14
+            Package type: npm
+            -----
+
+            
+            Package name: readable-stream
+            Package version: 2.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: readdir-scoped-modules
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: reduce-flatten
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: regexp.prototype.flags
+            Package version: 1.5.1
+            Package type: npm
+            -----
+
+            
+            Package name: registry-auth-token
+            Package version: 3.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: registry-auth-token
+            Package version: 3.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: registry-url
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: request
+            Package version: 2.81.0
+            Package type: npm
+            -----
+
+            
+            Package name: require-directory
+            Package version: 2.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: require-from-string
+            Package version: 2.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: require-main-filename
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: resolve
+            Package version: 1.22.8
+            Package type: npm
+            -----
+
+            
+            Package name: resolve-from
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: resolve-pkg-maps
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: retry
+            Package version: 0.10.1
+            Package type: npm
+            -----
+
+            
+            Package name: reusify
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: rimraf
+            Package version: 2.6.1
+            Package type: npm
+            -----
+
+            
+            Package name: rimraf
+            Package version: 2.7.1
+            Package type: npm
+            -----
+
+            
+            Package name: rimraf
+            Package version: 3.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: run-applescript
+            Package version: 5.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: run-parallel
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: run-queue
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: safe-array-concat
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: safe-buffer
+            Package version: 5.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: safe-buffer
+            Package version: 5.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: safe-regex-test
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: sax
+            Package version: 1.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: semver
+            Package version: 5.3.0
+            Package type: npm
+            -----
+
+            
+            Package name: semver
+            Package version: 5.7.1
+            Package type: npm
+            -----
+
+            
+            Package name: semver
+            Package version: 6.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: semver
+            Package version: 7.5.4
+            Package type: npm
+            -----
+
+            
+            Package name: semver
+            Package version: 7.5.4
+            Package type: npm
+            -----
+
+            
+            Package name: semver-diff
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: set-blocking
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: set-function-length
+            Package version: 1.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: set-function-name
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: sha
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: shebang-command
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: shebang-command
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: shebang-regex
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: shebang-regex
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: side-channel
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: signal-exit
+            Package version: 3.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: signal-exit
+            Package version: 3.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: slash
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: slice-ansi
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: slide
+            Package version: 1.1.6
+            Package type: npm
+            -----
+
+            
+            Package name: smart-buffer
+            Package version: 1.1.15
+            Package type: npm
+            -----
+
+            
+            Package name: sntp
+            Package version: 1.0.9
+            Package type: npm
+            -----
+
+            
+            Package name: socks
+            Package version: 1.1.10
+            Package type: npm
+            -----
+
+            
+            Package name: socks-proxy-agent
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: sorted-object
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: sorted-union-stream
+            Package version: 2.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: source-map
+            Package version: 0.6.1
+            Package type: npm
+            -----
+
+            
+            Package name: source-map-support
+            Package version: 0.5.21
+            Package type: npm
+            -----
+
+            
+            Package name: spdx-correct
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: spdx-expression-parse
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: spdx-license-ids
+            Package version: 1.2.2
+            Package type: npm
+            -----
+
+            
+            Package name: sprintf-js
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: sshpk
+            Package version: 1.13.1
+            Package type: npm
+            -----
+
+            
+            Package name: ssri
+            Package version: 4.1.6
+            Package type: npm
+            -----
+
+            
+            Package name: stack-utils
+            Package version: 2.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: stream-each
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: stream-iterate
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: stream-shift
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: string-format
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: string-hash
+            Package version: 1.1.3
+            Package type: npm
+            -----
+
+            
+            Package name: string-width
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: string-width
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: string-width
+            Package version: 2.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: string-width
+            Package version: 4.2.3
+            Package type: npm
+            -----
+
+            
+            Package name: string.prototype.trim
+            Package version: 1.2.8
+            Package type: npm
+            -----
+
+            
+            Package name: string.prototype.trimend
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: string.prototype.trimstart
+            Package version: 1.0.7
+            Package type: npm
+            -----
+
+            
+            Package name: string_decoder
+            Package version: 0.10.31
+            Package type: npm
+            -----
+
+            
+            Package name: string_decoder
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: stringstream
+            Package version: 0.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: strip-ansi
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: strip-ansi
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: strip-ansi
+            Package version: 6.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: strip-ansi
+            Package version: 6.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: strip-bom
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: strip-eof
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: strip-final-newline
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: strip-final-newline
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: strip-json-comments
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: strip-json-comments
+            Package version: 3.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: strnum
+            Package version: 1.0.5
+            Package type: npm
+            -----
+
+            
+            Package name: super-regex
+            Package version: 0.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: supports-color
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: supports-color
+            Package version: 5.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: supports-color
+            Package version: 5.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: supports-color
+            Package version: 7.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: supports-preserve-symlinks-flag
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: synckit
+            Package version: 0.8.6
+            Package type: npm
+            -----
+
+            
+            Package name: table
+            Package version: 6.8.1
+            Package type: npm
+            -----
+
+            
+            Package name: table-layout
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: tar
+            Package version: 2.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: tar-fs
+            Package version: 1.15.3
+            Package type: npm
+            -----
+
+            
+            Package name: tar-stream
+            Package version: 1.5.4
+            Package type: npm
+            -----
+
+            
+            Package name: term-size
+            Package version: 0.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: term-size
+            Package version: 1.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: text-table
+            Package version: 0.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: text-table
+            Package version: 0.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: through
+            Package version: 2.3.8
+            Package type: npm
+            -----
+
+            
+            Package name: through2
+            Package version: 2.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: time-span
+            Package version: 5.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: timed-out
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: titleize
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: to-regex-range
+            Package version: 5.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: tough-cookie
+            Package version: 2.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: ts-api-utils
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: ts-command-line-args
+            Package version: 2.5.1
+            Package type: npm
+            -----
+
+            
+            Package name: ts-node
+            Package version: 10.9.1
+            Package type: npm
+            -----
+
+            
+            Package name: tsconfig-paths
+            Package version: 3.14.2
+            Package type: npm
+            -----
+
+            
+            Package name: tslib
+            Package version: 1.14.1
+            Package type: npm
+            -----
+
+            
+            Package name: tslib
+            Package version: 2.6.2
+            Package type: npm
+            -----
+
+            
+            Package name: tunnel-agent
+            Package version: 0.6.0
+            Package type: npm
+            -----
+
+            
+            Package name: tweetnacl
+            Package version: 0.14.5
+            Package type: npm
+            -----
+
+            
+            Package name: type-check
+            Package version: 0.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: type-fest
+            Package version: 0.20.2
+            Package type: npm
+            -----
+
+            
+            Package name: typed-array-buffer
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: typed-array-byte-length
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: typed-array-byte-offset
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: typed-array-length
+            Package version: 1.0.4
+            Package type: npm
+            -----
+
+            
+            Package name: typedarray
+            Package version: 0.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: typescript
+            Package version: 5.3.3
+            Package type: npm
+            -----
+
+            
+            Package name: typical
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: typical
+            Package version: 5.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: uid-number
+            Package version: 0.0.6
+            Package type: npm
+            -----
+
+            
+            Package name: umask
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: unbox-primitive
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: unique-filename
+            Package version: 1.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: unique-slug
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: unique-string
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: universalify
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: unpipe
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: untildify
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: unzip-response
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: update-notifier
+            Package version: 2.2.0
+            Package type: npm
+            -----
+
+            
+            Package name: update-notifier
+            Package version: 2.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: uri-js
+            Package version: 4.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: uri-js
+            Package version: 4.4.1
+            Package type: npm
+            -----
+
+            
+            Package name: url
+            Package version: 0.10.3
+            Package type: npm
+            -----
+
+            
+            Package name: url-parse-lax
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: util
+            Package version: 0.12.5
+            Package type: npm
+            -----
+
+            
+            Package name: util-deprecate
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: util-extend
+            Package version: 1.0.3
+            Package type: npm
+            -----
+
+            
+            Package name: uuid
+            Package version: 3.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: uuid
+            Package version: 8.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: uuid
+            Package version: 8.3.2
+            Package type: npm
+            -----
+
+            
+            Package name: v8-compile-cache-lib
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: validate-npm-package-license
+            Package version: 3.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: validate-npm-package-name
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: verror
+            Package version: 1.3.6
+            Package type: npm
+            -----
+
+            
+            Package name: watchpack
+            Package version: 2.4.0
+            Package type: npm
+            -----
+
+            
+            Package name: wcwidth
+            Package version: 1.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: web-streams-polyfill
+            Package version: 3.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: which
+            Package version: 1.2.14
+            Package type: npm
+            -----
+
+            
+            Package name: which
+            Package version: 1.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: which
+            Package version: 2.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: which-boxed-primitive
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: which-module
+            Package version: 2.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: which-typed-array
+            Package version: 1.1.13
+            Package type: npm
+            -----
+
+            
+            Package name: wide-align
+            Package version: 1.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: widest-line
+            Package version: 1.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: widest-line
+            Package version: 2.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: wordwrapjs
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: worker-farm
+            Package version: 1.3.1
+            Package type: npm
+            -----
+
+            
+            Package name: wrap-ansi
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: wrappy
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: wrappy
+            Package version: 1.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: write-file-atomic
+            Package version: 2.1.0
+            Package type: npm
+            -----
+
+            
+            Package name: write-file-atomic
+            Package version: 2.4.3
+            Package type: npm
+            -----
+
+            
+            Package name: xdg-basedir
+            Package version: 3.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: xml2js
+            Package version: 0.5.0
+            Package type: npm
+            -----
+
+            
+            Package name: xmlbuilder
+            Package version: 11.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: xtend
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: xtend
+            Package version: 4.0.1
+            Package type: npm
+            -----
+
+            
+            Package name: y18n
+            Package version: 3.2.1
+            Package type: npm
+            -----
+
+            
+            Package name: y18n
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: yallist
+            Package version: 2.1.2
+            Package type: npm
+            -----
+
+            
+            Package name: yallist
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: yallist
+            Package version: 4.0.0
+            Package type: npm
+            -----
+
+            
+            Package name: yaml
+            Package version: 1.10.2
+            Package type: npm
+            -----
+
+            
+            Package name: yargs
+            Package version: 11.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: yargs-parser
+            Package version: 9.0.2
+            Package type: npm
+            -----
+
+            
+            Package name: yn
+            Package version: 3.1.1
+            Package type: npm
+            -----
+
+            
+            Package name: yocto-queue
+            Package version: 0.1.0
+            Package type: npm
+            -----
+
+            

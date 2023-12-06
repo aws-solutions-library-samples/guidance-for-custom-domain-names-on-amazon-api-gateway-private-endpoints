@@ -427,3 +427,5 @@ outputs/
 cdk/**/*.js
 cdk/**/*.d.ts
 **/probeout
+**/probe.yaml
+**/probeout*

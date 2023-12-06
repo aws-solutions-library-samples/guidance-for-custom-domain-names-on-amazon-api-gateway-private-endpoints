@@ -5,13 +5,11 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import * as yaml from 'js-yaml';
 import { parse } from 'ts-command-line-args';
 import { proxyDomain } from './bin/Main';
-import { exit } from 'process';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 type IArguments = {
     region: string;
-    // account: string
     destinationPath: string;
     stackOutputs: string;
     proxyFilePath: string;
@@ -20,45 +18,31 @@ type IArguments = {
 async function Run() {
     const args = parse<IArguments>({
         region: { type: String },
-        // account: { type: String },
         destinationPath: { type: String },
         stackOutputs: { type: String },
         proxyFilePath: { type: String },
     });
 
-    // console.log( `__dirname,args.proxyFilePath--->${ args.proxyFilePath }` );
-
     const yamlOutput: any = yaml.load(readFileSync(path.join(args.proxyFilePath), 'utf8'));
     const proxyDomains: proxyDomain[] = yamlOutput?.APIS as proxyDomain[];
 
     GenerateOutputsFile(args, proxyDomains);
-
-    // console.log( `${ JSON.stringify( args ) }` );
 }
 const GenerateOutputsFile = (props: IArguments, proxyDomains: proxyDomain[]): void => {
-    // console.log(`${props.stackOutputs}`);
-
     const apiGatewayVPCInterfaceEndpointId: any = (JSON.parse(props.stackOutputs) as any)?.find(
         (output: any) => output.OutputKey === 'apigatewayvpceid',
     )?.OutputValue;
 
-    // console.log( `apiGatewayVPCInterfaceEndpointId--> ${ apiGatewayVPCInterfaceEndpointId }` );
-
     const outputObj: any = {};
     outputObj.STACK_OUTPUTS = JSON.parse(props.stackOutputs);
 
-    // const arrApis: any[] = []
     const arrPolicyMappings: any = {};
     proxyDomains.forEach((item) => {
         const api_gateway_id = item.PRIVATE_API_URL.split('https://')[1].split('.execute-api')[0];
 
-        // console.log(`stringHash(item.PRIVATE_API_URL)--> ${stringHash('item.PRIVATE_API_URL')}`);
-
         if (api_gateway_id in arrPolicyMappings) {
-            // console.log( 'key1 exists in obj' );
             arrPolicyMappings[api_gateway_id].Statement.push(generateSpecificPolicyStatement(props, item));
         } else {
-            // console.log( 'key1 does not exist in obj' );
             arrPolicyMappings[api_gateway_id] = {
                 Version: '2012-10-17',
                 Statement: [
@@ -80,7 +64,6 @@ const GenerateOutputsFile = (props: IArguments, proxyDomains: proxyDomain[]): vo
         }
     });
 
-    // outputObj.APIS = arrApis
     outputObj.API_RESOURCE_POLICY_MAPPING = arrPolicyMappings;
 
     if (props.destinationPath.indexOf('\0') !== -1) {
@@ -116,8 +99,6 @@ const generateSpecificPolicyStatement = (props: IArguments, item: proxyDomain) =
 
 const generateResources = (props: IArguments, item: proxyDomain, policyType: 'deny' | 'allow') => {
     const resources: string[] = [];
-    // console.log( `${ item.PRIVATE_API_URL.split( 'https://' )[ 1 ].split( '.execute-api' )[ 0 ] }`);
-    // const api_gateway_id = item.PRIVATE_API_URL.split('https://')[1].split('.execute-api')[0];
     const pathSplit = new url.URL(item.PRIVATE_API_URL).pathname.split('/');
     const stage = pathSplit[1];
     let endPath = '';
@@ -139,8 +120,6 @@ const generateResources = (props: IArguments, item: proxyDomain, policyType: 'de
 
     return resources;
 };
-
-// console.log( `resources --> ${ resources }` );
 
 (async function () {
     await Run();

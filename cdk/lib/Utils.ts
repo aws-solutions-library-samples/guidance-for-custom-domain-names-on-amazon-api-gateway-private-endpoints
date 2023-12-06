@@ -1,10 +1,11 @@
 import { proxyDomain } from '../bin/Main';
 
 export const GenerateNginxConfig = (domainsList: proxyDomain[]): string => {
-    let conf_file_str = `user  nginx;
+    let conf_file_str = `
+user  nginx;
 worker_processes  auto;
 
-error_log  /var/log/nginx/error.log info;
+error_log  /var/log/nginx/error.log debug;
 pid        /var/run/nginx.pid;
 
 
@@ -14,31 +15,37 @@ events {
 
 
 http {
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    ssl_certificate /cert.pem;
+    ssl_certificate_key /key.pem;
     include       /etc/nginx/mime.types;
     default_type  application/octet-stream;
     server_names_hash_bucket_size 128;
     log_format  main  '$remote_addr - $remote_user - $server_name $host [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer"'
-                      '"$http_user_agent" "$http_x_forwarded_for"';
+                        '$status $body_bytes_sent "$http_referer"'
+                        '"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log  /var/log/nginx/access.log  main;
+    access_log  /var/log/nginx/access.log;
 
     sendfile        on;
     #tcp_nopush     on;
- 
+
     keepalive_timeout  65;
+    types_hash_max_size 2048;
+    types_hash_bucket_size 128;
 
     #gzip  on;
 
     server {
-      listen 443 default_server ssl;    
-      ssl_certificate /cert.pem;
-      ssl_certificate_key /key.pem;  
-      location / {
+        listen 443 default_server ssl;
+        keepalive_timeout 70;
+        location / {
         return 200 '<html><body>Private API URL not implemented.</body></html>';
         add_header Content-Type text/html;
-      }        
-    }
+        }
+    }    
+   
     `;
     domainsList.forEach((record) => {
         //extract api id from api gateway url
@@ -50,15 +57,13 @@ http {
         const conf_file_item = `
     server {
       listen 443 ssl;   
-      ssl_certificate /cert.pem;
-      ssl_certificate_key /key.pem;         
-      server_name ${record.CUSTOM_DOMAIN_URL};
+      server_name ${record.CUSTOM_DOMAIN_URL.split('https://')[1]};
       location / {          
           proxy_set_header X-Upstream-Domain  $server_name;          
           proxy_set_header Referer  $server_name;
           proxy_set_header x-apigw-api-id ${apiId};
           set $apiUrl ${privateAPIurl};
-          proxy_pass ${privateAPIurl};
+          proxy_pass $apiUrl;
           
       }
     }

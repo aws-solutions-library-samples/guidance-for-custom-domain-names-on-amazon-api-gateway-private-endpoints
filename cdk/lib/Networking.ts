@@ -304,6 +304,17 @@ export class NetworkingConstruct extends Construct {
                 privateDnsEnabled: true,
             });
 
+            // Create Interface Endpoint for ssm
+            new ec2.InterfaceVpcEndpoint(this, `${stackName}-ecr-ssm-interface-endpoint`, {
+                vpc: this.vpc,
+                service: ec2.InterfaceVpcEndpointAwsService.SSM,
+                securityGroups: [
+                    this.endpointSG,
+                    // defaultSG
+                ],
+                privateDnsEnabled: true,
+            });
+
             // Create Interface Endpoint for S3
             new ec2.GatewayVpcEndpoint(this, `${stackName}-s3-gateway-endpoint`, {
                 vpc: this.vpc,

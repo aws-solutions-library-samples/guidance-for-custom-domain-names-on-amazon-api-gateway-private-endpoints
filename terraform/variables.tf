@@ -77,7 +77,7 @@ variable "task_image" {
 
 variable "task_image_tag" {
   type     = string
-  default  = "2"
+  default  = "2023"
   nullable = false
   validation {
     condition     = var.task_image_tag != "latest"

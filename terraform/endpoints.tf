@@ -4,7 +4,8 @@ locals {
     "ecr.api",
     "execute-api",
     "logs",
-    "s3"
+    "s3",
+    "ssm"
   ]
   endpoint_ids = {
     "ecr.dkr"     = can(regex("(vpce-)[a-z0-9].*", data.external.existing_endpoint["ecr.dkr"].result)) ? null : true
@@ -12,6 +13,7 @@ locals {
     "execute-api" = can(regex("(vpce-)[a-z0-9].*", data.external.existing_endpoint["execute-api"].result)) ? null : true
     "logs"        = can(regex("(vpce-)[a-z0-9].*", data.external.existing_endpoint["logs"].result)) ? null : true
     "s3"          = can(regex("(vpce-)[a-z0-9].*", data.external.existing_endpoint["s3"].result)) ? null : true
+    "ssm"         = can(regex("(vpce-)[a-z0-9].*", data.external.existing_endpoint["ssm"].result)) ? null : true
   }
 }
 
