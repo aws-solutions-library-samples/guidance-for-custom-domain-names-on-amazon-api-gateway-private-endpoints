@@ -1,5 +1,5 @@
 resource "aws_security_group" "fg" {
-  count       = var.external_fargate_sg_id == null ? 1 : 0
+  count = var.external_fargate_sg_id == null ? 1 : 0
   #checkov:skip=CKV2_AWS_5:Security groups are attached conditionally if an external security group is not provided
   name        = "${local.name_prefix}_fg"
   vpc_id      = data.aws_vpc.selected.id
@@ -49,7 +49,7 @@ resource "aws_security_group_rule" "fg_ingress" {
 }
 
 module "ecs" {
-  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs?ref=32f1169f8fd2f1beb224a0b0f040d8825eb01c05"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs?ref=32f1169f8fd2f1beb224a0b0f040d8825eb01c05"
 
   cluster_name = local.name_prefix
   fargate_capacity_providers = {
@@ -104,16 +104,16 @@ resource "aws_ecs_task_definition" "app" {
   }
   container_definitions = jsonencode(
     [{
-      cpu    = 512
-      image  = docker_registry_image.nginx.name
-      memory = 1024
-      name   = local.service_name
+      cpu       = 512
+      image     = docker_registry_image.nginx.name
+      memory    = 1024
+      name      = local.service_name
       essential = true
       healthcheck = {
-        command = ["CMD-SHELL", "curl --cacert /cert.pem https://localhost || exit 1"]
+        command  = ["CMD-SHELL", "curl --cacert /cert.pem https://localhost || exit 1"]
         interval = 30
-        retries = 3
-        timeout = 5
+        retries  = 3
+        timeout  = 5
       }
       mountPoints = []
       volumesFrom = []

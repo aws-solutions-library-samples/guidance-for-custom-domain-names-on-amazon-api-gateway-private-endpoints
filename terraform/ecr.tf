@@ -12,11 +12,11 @@ provider "docker" {
 resource "random_id" "image_tag" {
   byte_length = 2
   keepers = {
-    platform   = var.task_platform
-    source_img = var.task_image
-    source_tag = var.task_image_tag
-    dockerfile = filesha256("${path.module}/docker/Dockerfile")
-    entrypoint = filesha256("${path.module}/docker/entrypoint.sh")
+    platform    = var.task_platform
+    source_img  = var.task_image
+    source_tag  = var.task_image_tag
+    dockerfile  = filesha256("${path.module}/docker/Dockerfile")
+    entrypoint  = filesha256("${path.module}/docker/entrypoint.sh")
     openssl_cnf = filesha256("${path.module}/docker/openssl.cnf")
   }
 }
@@ -39,7 +39,7 @@ resource "docker_image" "nginx" {
   name = "${aws_ecr_repository.nginx.repository_url}:${random_id.image_tag.hex}"
   build {
     context = "${path.module}/docker"
-    build_args =  {
+    build_args = {
       PLATFORM = var.task_platform == "ARM64" ? "linux/arm64" : "linux/amd64"
       IMAGE    = "${var.task_image}:${var.task_image_tag}"
     }
@@ -48,7 +48,7 @@ resource "docker_image" "nginx" {
 }
 
 resource "docker_registry_image" "nginx" {
-  name = docker_image.nginx.name
+  name                 = docker_image.nginx.name
   insecure_skip_verify = true
 }
 

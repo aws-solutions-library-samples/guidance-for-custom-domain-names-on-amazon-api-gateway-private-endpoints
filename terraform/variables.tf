@@ -76,11 +76,11 @@ variable "task_image" {
 }
 
 variable "task_image_tag" {
-  type    = string
-  default = "2"
+  type     = string
+  default  = "2"
   nullable = false
   validation {
-    condition = var.task_image_tag != "latest"
+    condition     = var.task_image_tag != "latest"
     error_message = "Using the latest tag for container images introduces security and reliability issues, please provide a specific tag."
   }
 }

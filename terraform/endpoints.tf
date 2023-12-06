@@ -30,7 +30,7 @@ data "aws_route_tables" "selected" {
 }
 
 module "endpoints" {
-  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc//modules/vpc-endpoints?ref=c467edb180c38f493b0e9c6fdc22998a97dfde89"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc//modules/vpc-endpoints?ref=c467edb180c38f493b0e9c6fdc22998a97dfde89"
 
   security_group_ids = [data.aws_security_group.endpoints.id]
   subnet_ids         = local.private_subnets
@@ -48,7 +48,7 @@ module "endpoints" {
 
 
 resource "aws_security_group" "vpc_endpoints" {
-  count       = var.external_endpoint_sg_id == null ? 1 : 0
+  count = var.external_endpoint_sg_id == null ? 1 : 0
   #checkov:skip=CKV2_AWS_5:Security groups are attached conditionally if an external security group is not provided
   name        = "${local.name_prefix}_vpc_endpoints"
   description = "Ingress to Service Endpoints"

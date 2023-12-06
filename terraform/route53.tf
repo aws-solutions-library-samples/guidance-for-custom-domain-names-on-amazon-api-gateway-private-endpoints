@@ -20,8 +20,8 @@ resource "aws_route53_zone" "this" {
   for_each = local.base_domains
   #checkov:skip=CKV2_AWS_38:DNSSEC may be enabled by customers if desired but is out of scope for this template
   #checkov:skip=CKV2_AWS_39:Query logging enabled using aws_route53_query_log resources seperatly
- 
-  name     = each.value
+
+  name = each.value
   vpc {
     vpc_id = local.vpc_id
   }
@@ -29,8 +29,8 @@ resource "aws_route53_zone" "this" {
 
 resource "aws_cloudwatch_log_group" "this" {
   #checkov:skip=CKV_AWS_158:Log group encryption may be enabled by customers if desired but is out of scope for this template
-  for_each = local.base_domains
-  name_prefix = "/aws/route53/${each.value}"
+  for_each          = local.base_domains
+  name_prefix       = "/aws/route53/${each.value}"
   retention_in_days = 365
 }
 
@@ -56,7 +56,7 @@ resource "aws_cloudwatch_log_resource_policy" "route53-query-logging-policy" {
 }
 
 resource "aws_route53_query_log" "this" {
-  for_each = local.base_domains
-  zone_id = data.aws_route53_zone.selected[each.value].zone_id
+  for_each                 = local.base_domains
+  zone_id                  = data.aws_route53_zone.selected[each.value].zone_id
   cloudwatch_log_group_arn = aws_cloudwatch_log_group.this[each.value].arn
 }

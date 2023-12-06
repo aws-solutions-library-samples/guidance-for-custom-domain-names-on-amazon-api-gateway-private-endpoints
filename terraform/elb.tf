@@ -1,5 +1,5 @@
 module "load_balancer" {
-  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-alb?ref=cb8e43d456a863e954f6b97a4a821f41d4280ab8"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-alb?ref=cb8e43d456a863e954f6b97a4a821f41d4280ab8"
 
   name               = local.name_prefix
   load_balancer_type = var.elb_type == "ALB" ? "application" : "network"
@@ -49,9 +49,9 @@ resource "aws_security_group" "alb" {
   #checkov:skip=CKV2_AWS_5: Security group is conditionally created and is associated with the ELB if created
   count = var.elb_type == "ALB" && var.external_alb_sg_id == null ? 1 : 0
 
-  name   = "${local.name_prefix}_alb"
+  name        = "${local.name_prefix}_alb"
   description = "Security Group for ALB"
-  vpc_id = data.aws_vpc.selected.id
+  vpc_id      = data.aws_vpc.selected.id
   ingress {
     description = "inbound from internet to alb"
     from_port   = 443
@@ -60,7 +60,7 @@ resource "aws_security_group" "alb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
-    description = "outbound from alb to fargate"
+    description     = "outbound from alb to fargate"
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"
