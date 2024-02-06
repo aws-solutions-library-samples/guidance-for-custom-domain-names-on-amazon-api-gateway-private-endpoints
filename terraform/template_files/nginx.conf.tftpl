@@ -11,6 +11,10 @@ events {
 
 
 http {
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    ssl_certificate /cert.pem;
+    ssl_certificate_key /key.pem;
     include       /etc/nginx/mime.types;
     default_type  application/octet-stream;
     server_names_hash_bucket_size 128;
@@ -25,13 +29,14 @@ http {
     #tcp_nopush     on;
 
     keepalive_timeout  65;
+    types_hash_max_size 2048;
+    types_hash_bucket_size 128;
 
     #gzip  on;
 
     server {
       listen 443 default_server ssl;
-      ssl_certificate /cert.pem;
-      ssl_certificate_key /key.pem;
+      keepalive_timeout 70;
       location / {
         return 200 '<html><body>Private API URL not implemented.</body></html>';
         add_header Content-Type text/html;
@@ -41,8 +46,7 @@ http {
     %{ for apiDomain, apiUrl in apis ~}
     server {
       listen 443 ssl;
-      ssl_certificate /cert.pem;
-      ssl_certificate_key /key.pem;
+      keepalive_timeout 70;
       server_name ${apiDomain};
       location / {
           proxy_set_header X-Upstream-Domain  $server_name;

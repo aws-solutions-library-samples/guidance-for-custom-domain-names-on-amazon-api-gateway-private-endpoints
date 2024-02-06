@@ -13,13 +13,50 @@ resource "aws_route53_record" "api" {
   records         = [module.load_balancer.lb_dns_name]
   ttl             = 60
   type            = "CNAME"
-  zone_id         = aws_route53_zone.private[trimprefix(regex("\\..*$", each.value.CUSTOM_DOMAIN_URL), ".")].zone_id
+  zone_id         = aws_route53_zone.this[trimprefix(regex("\\..*$", each.value.CUSTOM_DOMAIN_URL), ".")].zone_id
 }
 
-resource "aws_route53_zone" "private" {
+resource "aws_route53_zone" "this" {
   for_each = local.base_domains
-  name     = each.value
+  #checkov:skip=CKV2_AWS_38:DNSSEC may be enabled by customers if desired but is out of scope for this template
+  #checkov:skip=CKV2_AWS_39:Query logging enabled using aws_route53_query_log resources seperatly
+
+  name = each.value
   vpc {
     vpc_id = local.vpc_id
   }
+}
+
+resource "aws_cloudwatch_log_group" "this" {
+  #checkov:skip=CKV_AWS_158:Log group encryption may be enabled by customers if desired but is out of scope for this template
+  for_each          = local.base_domains
+  name_prefix       = "/aws/route53/${each.value}"
+  retention_in_days = 365
+}
+
+data "aws_iam_policy_document" "route53-query-logging-policy" {
+  statement {
+    actions = [
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
+
+    resources = ["arn:aws:logs:*:*:log-group:/aws/route53/*"]
+
+    principals {
+      identifiers = ["route53.amazonaws.com"]
+      type        = "Service"
+    }
+  }
+}
+
+resource "aws_cloudwatch_log_resource_policy" "route53-query-logging-policy" {
+  policy_document = data.aws_iam_policy_document.route53-query-logging-policy.json
+  policy_name     = "${local.name_prefix}-route53-query-logging-policy"
+}
+
+resource "aws_route53_query_log" "this" {
+  for_each                 = local.base_domains
+  zone_id                  = data.aws_route53_zone.selected[each.value].zone_id
+  cloudwatch_log_group_arn = aws_cloudwatch_log_group.this[each.value].arn
 }

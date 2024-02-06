@@ -8,6 +8,7 @@ import { Construct } from 'constructs';
 import * as cdk from 'aws-cdk-lib';
 import { proxyDomain, elbTypeEnum } from '../bin/Main';
 import { NagSuppressions } from 'cdk-nag';
+import * as s3 from 'aws-cdk-lib/aws-s3';
 
 type RoutingProps = {
     vpc: ec2.Vpc;
@@ -98,6 +99,15 @@ export class RoutingConstruct extends Construct {
             return cert as aws_cert.Certificate;
         });
 
+        const AccessLogsBucket = new s3.Bucket(this, `${stackName}-AccessLogsBucket`, {
+            encryption: s3.BucketEncryption.S3_MANAGED,
+            blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+            accessControl: s3.BucketAccessControl.LOG_DELIVERY_WRITE,
+            removalPolicy: cdk.RemovalPolicy.DESTROY,
+            enforceSSL: true,
+            autoDeleteObjects: true,
+        });
+
         if (props.elbType === elbTypeEnum.NLB) {
             // Network load balancer
             const networkLoadBalancer = new alb.NetworkLoadBalancer(this, `${stackName}-nlb`, {
@@ -112,17 +122,28 @@ export class RoutingConstruct extends Construct {
                 crossZoneEnabled: true,
             });
 
+            networkLoadBalancer.logAccessLogs(AccessLogsBucket);
+
             const networkTargetGroupHttps = new alb.NetworkTargetGroup(this, `${stackName}-nlb-target-group`, {
                 port: 443,
                 vpc: props.vpc,
                 protocol: alb.Protocol.TLS,
                 targetType: alb.TargetType.IP,
                 healthCheck: {
-                    interval: cdk.Duration.seconds(10),
+                    path: '/',
+                    timeout: cdk.Duration.seconds(2),
+                    interval: cdk.Duration.seconds(5),
+                    healthyThresholdCount: 2,
+                    unhealthyThresholdCount: 2,
+                    protocol: alb.Protocol.HTTPS,
                 },
             });
             networkTargetGroupHttps.configureHealthCheck({
                 path: '/',
+                timeout: cdk.Duration.seconds(2),
+                interval: cdk.Duration.seconds(5),
+                healthyThresholdCount: 2,
+                unhealthyThresholdCount: 2,
                 protocol: alb.Protocol.HTTPS,
             });
             const nlbListener = networkLoadBalancer.addListener(`${stackName}-nlb-listener`, {
@@ -160,6 +181,8 @@ export class RoutingConstruct extends Construct {
                 securityGroup: props.albSG,
                 internetFacing: false,
             });
+
+            loadBalancer.logAccessLogs(AccessLogsBucket);
 
             // Target group to make resources containers discoverable by the application load balancer
             const targetGroupHttps = new alb.ApplicationTargetGroup(this, `${stackName}-alb-target-group`, {
@@ -210,6 +233,10 @@ export class RoutingConstruct extends Construct {
                 {
                     id: 'AwsSolutions-ELB2',
                     reason: 'This is designed to be a minimal solution, logging would add complexity and resources.  Users can enable access logging if required.',
+                },
+                {
+                    id: 'AwsSolutions-S1',
+                    reason: 'This is the logging bucket.',
                 },
             ],
             true,

@@ -1,13 +1,44 @@
-module "load_balancer" {
-  source  = "terraform-aws-modules/alb/aws"
-  version = ">=8.1.0"
+module "elb_bucket" {
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket?ref=7263d096e3386493dc5113ad61ad0670e6c99028"
 
-  name               = local.name_prefix
-  load_balancer_type = var.elb_type == "ALB" ? "application" : "network"
-  vpc_id             = data.aws_vpc.selected.id
-  internal           = true
-  subnets            = local.private_subnets
-  security_groups    = var.elb_type == "ALB" ? [local.alb_sg_id] : null
+  bucket_prefix       = "${local.name_prefix}-elb-logs"
+  force_destroy       = true
+  block_public_policy = true
+  lifecycle_rule = [
+    {
+      id      = "expire-elb-logs"
+      enabled = true
+      expiration = {
+        days = 30
+      }
+    }
+  ]
+  versioning = {
+    enabled = true
+  }
+
+}
+
+resource "aws_s3_bucket_policy" "elb_bucket_policy" {
+  bucket = module.elb_bucket.s3_bucket_id
+  policy = var.elb_type == "ALB" ? data.aws_iam_policy_document.alb_access_log_policy.json : data.aws_iam_policy_document.nlb_access_log_policy.json
+
+}
+
+module "load_balancer" {
+  source     = "git::https://github.com/terraform-aws-modules/terraform-aws-alb?ref=cb8e43d456a863e954f6b97a4a821f41d4280ab8"
+  depends_on = [aws_s3_bucket_policy.elb_bucket_policy]
+
+  name                             = local.name_prefix
+  load_balancer_type               = var.elb_type == "ALB" ? "application" : "network"
+  vpc_id                           = data.aws_vpc.selected.id
+  internal                         = true
+  subnets                          = local.private_subnets
+  security_groups                  = var.elb_type == "ALB" ? [local.alb_sg_id] : null
+  enable_cross_zone_load_balancing = true
+  access_logs = {
+    bucket = module.elb_bucket.s3_bucket_id
+  }
   target_groups = [
     {
       name_prefix      = length(local.name_prefix) > 6 ? substr(local.name_prefix, 0, 6) : local.name_prefix
@@ -16,8 +47,8 @@ module "load_balancer" {
       target_type      = "ip"
       health_check = {
         protocol            = var.elb_type == "ALB" ? "HTTPS" : "TCP"
-        healthy_threshold   = 3
-        unhealthy_threshold = 3
+        healthy_threshold   = 2
+        unhealthy_threshold = 2
         interval            = var.elb_type == "ALB" ? 5 : 10
         timeout             = var.elb_type == "ALB" ? 2 : null
       }
@@ -26,11 +57,13 @@ module "load_balancer" {
 }
 
 resource "aws_lb_listener" "this" {
+  #checkov:skip=CKV_AWS_2:protocol is set to HTTPS if ELB is ALB and TLS for NLB
+  #checkov:skip=CKV_AWS_103:ssl policy does not allow TLS1.1 this is a false positive
   load_balancer_arn = module.load_balancer.lb_arn
   port              = 443
   protocol          = var.elb_type == "ALB" ? "HTTPS" : "TLS"
   certificate_arn   = module.acm[tolist(local.base_domains)[0]].acm_certificate_arn
-  ssl_policy        = "ELBSecurityPolicy-TLS-1-2-Ext-2018-06"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   default_action {
     type             = "forward"
     target_group_arn = module.load_balancer.target_group_arns[0]
@@ -45,19 +78,23 @@ resource "aws_lb_listener_certificate" "load_balancer" {
 }
 
 resource "aws_security_group" "alb" {
-  count = var.elb_type == "ALB" && var.external_alb_sg_id == null ?  1 : 0
+  #checkov:skip=CKV2_AWS_5: Security group is conditionally created and is associated with the ELB if created
+  count = var.elb_type == "ALB" && var.external_alb_sg_id == null ? 1 : 0
 
-  name   = "${local.name_prefix}_alb"
-  vpc_id = data.aws_vpc.selected.id
+  name        = "${local.name_prefix}_alb"
+  description = "Security Group for ALB"
+  vpc_id      = data.aws_vpc.selected.id
   ingress {
+    description = "inbound from internet to alb"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
-    from_port       = 80
-    to_port         = 80
+    description     = "outbound from alb to fargate"
+    from_port       = 443
+    to_port         = 443
     protocol        = "tcp"
     security_groups = [data.aws_security_group.fg.id]
   }

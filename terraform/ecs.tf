@@ -1,5 +1,6 @@
 resource "aws_security_group" "fg" {
   count = var.external_fargate_sg_id == null ? 1 : 0
+  #checkov:skip=CKV2_AWS_5:Security groups are attached conditionally if an external security group is not provided
   name        = "${local.name_prefix}_fg"
   vpc_id      = data.aws_vpc.selected.id
   description = "Egress from Fargate"
@@ -11,10 +12,10 @@ resource "aws_security_group" "fg" {
     security_groups = [data.aws_security_group.endpoints.id]
   }
   egress {
-    description = "HTTPS to S3 Gateway Endpoint"
-    from_port   = "443"
-    to_port     = "443"
-    protocol    = "tcp"
+    description     = "HTTPS to S3 Gateway Endpoint"
+    from_port       = "443"
+    to_port         = "443"
+    protocol        = "tcp"
     prefix_list_ids = [data.aws_prefix_list.s3.id]
   }
 }
@@ -24,13 +25,13 @@ data "aws_security_group" "fg" {
 }
 
 data "aws_vpc_endpoint_service" "s3" {
-  service = "s3"
+  service      = "s3"
   service_type = "Gateway"
 }
 
 data "aws_prefix_list" "s3" {
   filter {
-    name = "prefix-list-name"
+    name   = "prefix-list-name"
     values = [data.aws_vpc_endpoint_service.s3.service_name]
   }
 }
@@ -48,10 +49,13 @@ resource "aws_security_group_rule" "fg_ingress" {
 }
 
 module "ecs" {
-  source  = "terraform-aws-modules/ecs/aws"
-  version = ">=4.1.1"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs?ref=32f1169f8fd2f1beb224a0b0f040d8825eb01c05"
 
   cluster_name = local.name_prefix
+  cluster_settings = {
+    name  = "containerInsights"
+    value = "enabled"
+  }
   fargate_capacity_providers = {
     FARGATE = {
       default_capacity_provider_strategy = {
@@ -92,6 +96,25 @@ resource "aws_appautoscaling_policy" "ecs_policy" {
   }
 }
 
+resource "random_id" "nginx_config" {
+  byte_length = 8
+}
+
+resource "aws_ssm_parameter" "nginx_config" {
+  name = "nginx-conf-${random_id.nginx_config.id}"
+  #checkov:skip=CKV_AWS_337:CMK is out of scope for this solution, users can add CMK if desired
+  type = "SecureString"
+  value = templatefile(
+    "${path.module}/template_files/nginx.conf.tftpl", {
+      apis = zipmap(
+        [for api in local.api_list : trimprefix(api.CUSTOM_DOMAIN_URL, "https://")],
+        [for api in local.api_list : trimprefix(api.PRIVATE_API_URL, "https://")]
+      ), dns_server = cidrhost(data.aws_vpc.selected.cidr_block, 2, ),
+      endpoint_url  = module.endpoints.endpoints["execute-api"].dns_entry[0].dns_name
+    }
+  )
+}
+
 resource "aws_ecs_task_definition" "app" {
   family                   = local.service_name
   network_mode             = "awsvpc"
@@ -104,27 +127,24 @@ resource "aws_ecs_task_definition" "app" {
   }
   container_definitions = jsonencode(
     [{
-      cpu         = 512
-      image       = module.docker_image.image_uri
-      memory      = 1024
-      name        = local.service_name
+      cpu       = 512
+      image     = docker_registry_image.nginx.name
+      memory    = 1024
+      name      = local.service_name
+      essential = true
       healthcheck = {
-        command = ["CMD-SHELL", "curl --cacert /cert.pem https://localhost || exit 1"]
+        command  = ["CMD-SHELL", "curl --cacert /cert.pem https://localhost || exit 1"]
+        interval = 30
+        retries  = 3
+        timeout  = 5
       }
+      mountPoints = []
+      volumesFrom = []
       networkMode = "awsvpc"
-      environment = [
+      secrets = [
         {
-          name = "NGINX_CONFIG",
-          value = base64encode(templatefile(
-            "${path.module}/template_files/nginx.conf.tftpl", {
-              apis = zipmap(
-                [for api in local.api_list : trimprefix(api.CUSTOM_DOMAIN_URL, "https://")],
-                [for api in local.api_list : trimprefix(api.PRIVATE_API_URL, "https://")]
-              ), dns_server = cidrhost(data.aws_vpc.selected.cidr_block, 2,), 
-              endpoint_url = module.endpoints.endpoints["execute-api"].dns_entry[0].dns_name
-            }
-            )
-          )
+          name      = "NGINX_CONFIG",
+          valueFrom = aws_ssm_parameter.nginx_config.arn
         }
       ]
       portMappings = [
@@ -137,7 +157,7 @@ resource "aws_ecs_task_definition" "app" {
       logConfiguration = {
         logdriver = "awslogs"
         options = {
-          "awslogs-group"         = "/ecs/${local.service_name}"
+          "awslogs-group"         = "/ecs/${local.service_name}-${random_id.id.hex}"
           "awslogs-region"        = data.aws_region.current.name
           "awslogs-stream-prefix" = "stdout"
           "awslogs-create-group"  = "true"
@@ -156,8 +176,10 @@ resource "aws_ecs_task_definition" "app" {
 
 resource "aws_ecs_service" "nginx" {
   depends_on = [
-    module.vpc[0]
+    module.vpc[0],
+    module.load_balancer
   ]
+
   name                   = local.service_name
   cluster                = module.ecs.cluster_id
   task_definition        = aws_ecs_task_definition.app.arn
@@ -165,7 +187,7 @@ resource "aws_ecs_service" "nginx" {
   scheduling_strategy    = "REPLICA"
   desired_count          = 1
   force_new_deployment   = true
-  enable_execute_command = true
+  enable_execute_command = false
   deployment_circuit_breaker {
     enable   = true
     rollback = true

@@ -16,6 +16,8 @@ import { ApplicationTargetGroup, NetworkTargetGroup } from 'aws-cdk-lib/aws-elas
 import { proxyDomain } from '../bin/Main';
 import { GenerateNginxConfig } from './Utils';
 import { NagSuppressions } from 'cdk-nag';
+import { aws_ssm } from 'aws-cdk-lib';
+import { Secret } from 'aws-cdk-lib/aws-ecs';
 
 type FargateProps = {
     vpc: ec2.Vpc;
@@ -135,10 +137,22 @@ export class FargateServiceConstruct extends Construct {
             },
         });
 
-        const apiGatewayVPCInterfaceEndpointDNSName = objCustomResource.getAtt('Result').toString();
+        const ApiGatewayVpcDns = new aws_ssm.StringParameter(this, 'ApiGatewayVpcDns', {
+            stringValue: objCustomResource.getAtt('Result').toString(),
+        });
+
+        const NginxConfParam = new aws_ssm.StringParameter(this, 'NginxConfParam', {
+            stringValue: GenerateNginxConfig(props.proxyDomains),
+        });
 
         // The docker container including the image to use
-        const fgContainer = new ecs.ContainerDefinition(this, `${stackName}-container-def`, {
+        if (props.taskImage === 'latest') {
+            throw new Error(
+                'Using the latest tag for container images introduces security and reliability issues, please provide a specific tag.',
+            );
+        }
+
+        new ecs.ContainerDefinition(this, `${stackName}-container-def`, {
             taskDefinition: taskDefinition,
             memoryLimitMiB: 1024,
             image: ecs.ContainerImage.fromAsset('./image', {
@@ -152,16 +166,14 @@ export class FargateServiceConstruct extends Construct {
                 streamPrefix: `${stackName}-fargate-service`,
                 logRetention: logs.RetentionDays.ONE_MONTH,
             }),
-            environment: {
-                NGINX_CONFIG: btoa(GenerateNginxConfig(props.proxyDomains)), //base 64 encoded Nginx config file
-                API_GATEWAY_VPC_DNS: apiGatewayVPCInterfaceEndpointDNSName,
+            secrets: {
+                NGINX_CONFIG: Secret.fromSsmParameter(NginxConfParam),
+                API_GATEWAY_VPC_DNS: Secret.fromSsmParameter(ApiGatewayVpcDns),
             },
             healthCheck: {
                 command: ['CMD-SHELL', 'curl --cacert /cert.pem https://localhost || exit 1'],
             },
         });
-
-        fgContainer.node.addDependency(objCustomResource);
 
         // The ECS Service used for deploying tasks
         const service = new ecs.FargateService(this, `${stackName}-fargate-service`, {

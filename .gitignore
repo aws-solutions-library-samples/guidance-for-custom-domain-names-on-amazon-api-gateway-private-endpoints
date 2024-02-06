@@ -54,8 +54,8 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
-jspm_packages/
+**/node_modules/
+**/jspm_packages/
 
 # TypeScript v1 declaration files
 typings/
@@ -414,7 +414,10 @@ override.tf.json
 terraform.rc
 
 # Ignore locally generated files
-config/*.yaml
+!config/.empty
+config/*
+!outputs/.empty
+outputs/*
 tfsec-checksums.txt
 tfsec-linux-amd64
 ignore
@@ -423,3 +426,6 @@ outputs/
 !cdk/.eslintrc.js
 cdk/**/*.js
 cdk/**/*.d.ts
+**/probeout
+**/probe.yaml
+**/probeout*

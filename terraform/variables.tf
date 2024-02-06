@@ -36,8 +36,8 @@ variable "vpc_cidr" {
 }
 
 variable "external_vpc_id" {
-  type    = string
-  default = null
+  type     = string
+  default  = null
   nullable = true
   validation {
     condition     = can(regex("(vpc-[0-9a-f]+|)", var.external_vpc_id)) || var.external_vpc_id == null
@@ -76,8 +76,13 @@ variable "task_image" {
 }
 
 variable "task_image_tag" {
-  type    = string
-  default = "2"
+  type     = string
+  default  = "2023"
+  nullable = false
+  validation {
+    condition     = var.task_image_tag != "latest"
+    error_message = "Using the latest tag for container images introduces security and reliability issues, please provide a specific tag."
+  }
 }
 
 variable "proxy_config_path" {
@@ -114,8 +119,8 @@ variable "task_scale_cpu_pct" {
 }
 
 variable "external_endpoint_sg_id" {
-  type    = string
-  default = null
+  type     = string
+  default  = null
   nullable = true
   validation {
     condition     = can(regex("(sg-[0-9a-f]+|)", var.external_endpoint_sg_id)) || var.external_endpoint_sg_id == null
@@ -125,8 +130,8 @@ variable "external_endpoint_sg_id" {
 }
 
 variable "external_fargate_sg_id" {
-  type    = string
-  default = null
+  type     = string
+  default  = null
   nullable = true
   validation {
     condition     = can(regex("(sg-[0-9a-f]+|)", var.external_fargate_sg_id)) || var.external_fargate_sg_id == null
@@ -136,8 +141,8 @@ variable "external_fargate_sg_id" {
 }
 
 variable "external_alb_sg_id" {
-  type    = string
-  default = null
+  type     = string
+  default  = null
   nullable = true
   validation {
     condition     = can(regex("(sg-[0-9a-f]+|)", var.external_alb_sg_id)) || var.external_alb_sg_id == null

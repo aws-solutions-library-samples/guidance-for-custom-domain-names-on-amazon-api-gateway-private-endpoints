@@ -5,7 +5,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=1.2, ~>1.4 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >=4.0 |
-| <a name="requirement_docker"></a> [docker](#requirement\_docker) | ~>2.22.0 |
+| <a name="requirement_docker"></a> [docker](#requirement\_docker) | ~>3.0.2 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | ~>2.2.2 |
 | <a name="requirement_jq"></a> [jq](#requirement\_jq) | ~>0.2.1 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | ~>2.2.3 |
@@ -16,22 +16,22 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.9.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.29.0 |
+| <a name="provider_docker"></a> [docker](#provider\_docker) | 3.0.2 |
 | <a name="provider_external"></a> [external](#provider\_external) | 2.2.3 |
-| <a name="provider_local"></a> [local](#provider\_local) | 2.2.3 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.2.1 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.2.2 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_acm"></a> [acm](#module\_acm) | terraform-aws-modules/acm/aws | ~>4.3.1 |
-| <a name="module_docker_image"></a> [docker\_image](#module\_docker\_image) | terraform-aws-modules/lambda/aws//modules/docker-build | ~>4.7.1 |
-| <a name="module_ecs"></a> [ecs](#module\_ecs) | terraform-aws-modules/ecs/aws | >=4.1.1 |
-| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | terraform-aws-modules/vpc/aws//modules/vpc-endpoints | ~>3.18.1 |
-| <a name="module_load_balancer"></a> [load\_balancer](#module\_load\_balancer) | terraform-aws-modules/alb/aws | >=8.1.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | >=3.18.0 |
+| <a name="module_acm"></a> [acm](#module\_acm) | git::https://github.com/terraform-aws-modules/terraform-aws-acm | 8d0b22f1f242a1b36e29b8cb38aaeac9b887500d |
+| <a name="module_ecs"></a> [ecs](#module\_ecs) | git::https://github.com/terraform-aws-modules/terraform-aws-ecs | 32f1169f8fd2f1beb224a0b0f040d8825eb01c05 |
+| <a name="module_elb_bucket"></a> [elb\_bucket](#module\_elb\_bucket) | git::https://github.com/terraform-aws-modules/terraform-aws-s3-bucket | 7263d096e3386493dc5113ad61ad0670e6c99028 |
+| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | git::https://github.com/terraform-aws-modules/terraform-aws-vpc//modules/vpc-endpoints | c467edb180c38f493b0e9c6fdc22998a97dfde89 |
+| <a name="module_load_balancer"></a> [load\_balancer](#module\_load\_balancer) | git::https://github.com/terraform-aws-modules/terraform-aws-alb | cb8e43d456a863e954f6b97a4a821f41d4280ab8 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/terraform-aws-modules/terraform-aws-vpc | c467edb180c38f493b0e9c6fdc22998a97dfde89 |
 
 ## Resources
 
@@ -39,6 +39,9 @@
 |------|------|
 | [aws_appautoscaling_policy.ecs_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/appautoscaling_policy) | resource |
 | [aws_appautoscaling_target.ecs_target](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/appautoscaling_target) | resource |
+| [aws_cloudwatch_log_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
+| [aws_cloudwatch_log_resource_policy.route53-query-logging-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_resource_policy) | resource |
+| [aws_ecr_repository.nginx](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository_policy.ecr_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecs_service.nginx](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_service) | resource |
 | [aws_ecs_task_definition.app](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition) | resource |
@@ -52,21 +55,29 @@
 | [aws_iam_role_policy_attachment.fargate_task_managed_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_lb_listener.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
 | [aws_lb_listener_certificate.load_balancer](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener_certificate) | resource |
+| [aws_route53_query_log.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_query_log) | resource |
 | [aws_route53_record.api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_route53_zone.private](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone) | resource |
+| [aws_route53_zone.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone) | resource |
+| [aws_s3_bucket_policy.elb_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
 | [aws_security_group.alb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group.fg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group.vpc_endpoints](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.fg_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
-| [local_file.output](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
+| [aws_ssm_parameter.nginx_config](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
+| [docker_image.nginx](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs/resources/image) | resource |
+| [docker_registry_image.nginx](https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs/resources/registry_image) | resource |
 | [null_resource.enable_vpc_dns](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.proxy_config](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
-| [random_string.image_tag](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
-| [random_string.repo_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [random_id.id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
+| [random_id.image_tag](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
+| [random_id.nginx_config](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_ecr_authorization_token.token](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecr_authorization_token) | data source |
 | [aws_iam_policy.ecs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy) | data source |
+| [aws_iam_policy_document.alb_access_log_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.nlb_access_log_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.route53-query-logging-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
 | [aws_prefix_list.s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/prefix_list) | data source |
@@ -95,7 +106,7 @@
 | <a name="input_proxy_config_path"></a> [proxy\_config\_path](#input\_proxy\_config\_path) | n/a | `string` | `"../config/proxy-config.yaml"` | no |
 | <a name="input_public_subnets"></a> [public\_subnets](#input\_public\_subnets) | n/a | `bool` | `false` | no |
 | <a name="input_task_image"></a> [task\_image](#input\_task\_image) | Image reference for nginx ECS task | `string` | `"amazonlinux"` | no |
-| <a name="input_task_image_tag"></a> [task\_image\_tag](#input\_task\_image\_tag) | n/a | `string` | `"2"` | no |
+| <a name="input_task_image_tag"></a> [task\_image\_tag](#input\_task\_image\_tag) | n/a | `string` | `"2023"` | no |
 | <a name="input_task_platform"></a> [task\_platform](#input\_task\_platform) | CPU platform for ECS task. | `string` | `"ARM64"` | no |
 | <a name="input_task_scale_cpu_pct"></a> [task\_scale\_cpu\_pct](#input\_task\_scale\_cpu\_pct) | CPU usage percentage that will cause ECS to increase the task count. | `number` | `80` | no |
 | <a name="input_task_scale_max"></a> [task\_scale\_max](#input\_task\_scale\_max) | Maximum NGINX tasks | `number` | `4` | no |

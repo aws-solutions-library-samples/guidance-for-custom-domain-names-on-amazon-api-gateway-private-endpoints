@@ -8,46 +8,52 @@ provider "docker" {
   }
 }
 
-resource "random_string" "repo_suffix" {
-  length  = 5
-  special = false
-  upper   = false
-}
 
-resource "random_string" "image_tag" {
-  length  = 5
-  special = false
-  upper   = false
+resource "random_id" "image_tag" {
+  byte_length = 2
   keepers = {
-    platform   = var.task_platform
-    source_img = var.task_image
-    source_tag = var.task_image_tag
-    dockerfile = filesha256("${path.module}/docker/Dockerfile")
+    platform    = var.task_platform
+    source_img  = var.task_image
+    source_tag  = var.task_image_tag
+    dockerfile  = filesha256("${path.module}/docker/Dockerfile")
+    entrypoint  = filesha256("${path.module}/docker/entrypoint.sh")
+    openssl_cnf = filesha256("${path.module}/docker/openssl.cnf")
   }
 }
 
-#tfsec:ignore:aws-ecr-repository-customer-key #ECR repository encrypted with default keys, end-user can adjust using customer managed KMS key if desired.
-module "docker_image" {
-  source               = "terraform-aws-modules/lambda/aws//modules/docker-build"
-  version              = "~>4.7.1"
-  create_ecr_repo      = true
-  ecr_repo             = "${local.name_prefix}_${random_string.repo_suffix.result}"
-  ecr_force_delete     = true
-  source_path          = "${path.module}/docker"
+#tfsec:ignore:aws-ecr-repository-customer-key #Repository is encrypted, customers can deploy customer managed keys if desired.
+resource "aws_ecr_repository" "nginx" {
+  name                 = "${local.name_prefix}-${random_id.id.hex}"
+  force_delete         = true
   image_tag_mutability = "IMMUTABLE"
-  scan_on_push         = true
-  image_tag            = random_string.image_tag.result
-  build_args = {
-    PLATFORM = var.task_platform == "ARM64" ? "linux/arm64" : "linux/amd64"
-    IMAGE    = "${var.task_image}:${var.task_image_tag}"
+  image_scanning_configuration {
+    scan_on_push = true
   }
+  encryption_configuration {
+    #checkov:skip=CKV_AWS_136:The repository is encrypted, customers can deploy customer managed keys if desired.
+    encryption_type = "KMS"
+  }
+}
+
+resource "docker_image" "nginx" {
+  name = "${aws_ecr_repository.nginx.repository_url}:${random_id.image_tag.hex}"
+  build {
+    context = "${path.module}/docker"
+    build_args = {
+      PLATFORM = var.task_platform == "ARM64" ? "linux/arm64" : "linux/amd64"
+      IMAGE    = "${var.task_image}:${var.task_image_tag}"
+    }
+    force_remove = true
+  }
+}
+
+resource "docker_registry_image" "nginx" {
+  name                 = docker_image.nginx.name
+  insecure_skip_verify = true
 }
 
 resource "aws_ecr_repository_policy" "ecr_policy" {
-  depends_on = [
-    module.docker_image
-  ]
-  repository = "${local.name_prefix}_${random_string.repo_suffix.result}"
+  repository = aws_ecr_repository.nginx.name
 
   policy = jsonencode({
     Version = "2012-10-17"
