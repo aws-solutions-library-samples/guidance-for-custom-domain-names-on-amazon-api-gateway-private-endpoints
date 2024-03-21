@@ -26,12 +26,12 @@ resource "aws_ecr_repository" "nginx" {
   name                 = "${local.name_prefix}-${random_id.id.hex}"
   force_delete         = true
   image_tag_mutability = "IMMUTABLE"
+  encryption_configuration {
+    encryption_type = "KMS"
+    kms_key = aws_kms_key.ecr_repo_cmk.arn
+  }
   image_scanning_configuration {
     scan_on_push = true
-  }
-  encryption_configuration {
-    #checkov:skip=CKV_AWS_136:The repository is encrypted, customers can deploy customer managed keys if desired.
-    encryption_type = "KMS"
   }
 }
 

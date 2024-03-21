@@ -28,3 +28,35 @@ resource "aws_kms_key" "route53_logs_cmk" {
 }
 POLICY
 }
+
+resource "aws_kms_key" "ecr_repo_cmk" {
+
+  description = "KMS key for encrypting ecr repository"
+  enable_key_rotation = true
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Enable IAM User Permissions",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:${data.aws_partition.current.id}:iam::${data.aws_caller_identity.current.account_id}:root" 
+      },
+      "Action": "kms:*",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Allow use of the key",  
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ecr.amazonaws.com" 
+      },
+      "Action": "kms:Encrypt",
+      "Resource": "*"
+    }
+  ]
+}  
+POLICY
+
+}
