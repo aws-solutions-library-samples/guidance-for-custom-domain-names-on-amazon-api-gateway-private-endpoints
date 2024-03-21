@@ -42,3 +42,14 @@ data "aws_iam_policy_document" "this" {
     }
   }
 }
+
+resource "local_file" "outputs_json" {
+  for_each = {
+    for api in local.api_list : api.CUSTOM_DOMAIN_URL => api
+  }
+
+  filename = "${path.module}/../outputs/outputs_${each.key}.json"
+
+  content = data.aws_iam_policy_document.this[each.value.CUSTOM_DOMAIN_URL].json
+
+}

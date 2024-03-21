@@ -19,24 +19,16 @@ resource "aws_route53_record" "api" {
 resource "aws_route53_zone" "this" {
   for_each = local.base_domains
   #checkov:skip=CKV2_AWS_39:Query logging enabled using aws_route53_query_log resources seperatly
-  #checkov:skip=CKV2_AWS_38:DNSSEC enabled with aws_route53_signing_key resources seperatly
+  #checkov:skip=CKV2_AWS_38:DNSSEC is not supported for private zones
   name = each.value
   vpc {
     vpc_id = local.vpc_id
   }
 }
 
-resource "aws_route53_signing_key" "this" {
-  for_each = local.base_domains
-  
-  hosted_zone_id = aws_route53_zone.this[each.value].zone_id 
-  key_management_service_arn = aws_kms_key.route53_signing_key_cmk.arn
-  name = "${local.name_prefix}-${each.value}"
-}
-
 resource "aws_cloudwatch_log_group" "this" {
   for_each          = local.base_domains
-  kms_key_id = aws_kms_key.route53_logs_cmk.arn
+  kms_key_id        = aws_kms_key.route53_logs_cmk.arn
   name_prefix       = "/aws/route53/${each.value}"
   retention_in_days = 365
 }

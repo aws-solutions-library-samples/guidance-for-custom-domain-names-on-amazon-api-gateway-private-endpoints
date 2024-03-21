@@ -28,7 +28,7 @@ resource "aws_ecr_repository" "nginx" {
   image_tag_mutability = "IMMUTABLE"
   encryption_configuration {
     encryption_type = "KMS"
-    kms_key = aws_kms_key.ecr_repo_cmk.arn
+    kms_key         = aws_kms_key.ecr_repo_cmk.arn
   }
   image_scanning_configuration {
     scan_on_push = true
