@@ -1,6 +1,6 @@
 resource "aws_kms_key" "route53_logs_cmk" {
   description             = "KMS key for encrypting Route 53 logs in CloudWatch Logs"
-
+  enable_key_rotation = true
   policy = <<POLICY
 {
   "Version": "2012-10-17",
