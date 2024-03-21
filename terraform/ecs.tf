@@ -102,7 +102,7 @@ resource "random_id" "nginx_config" {
 
 resource "aws_ssm_parameter" "nginx_config" {
   name = "nginx-conf-${random_id.nginx_config.id}"
-  #checkov:skip=CKV_AWS_337:CMK is out of scope for this solution, users can add CMK if desired
+  key_id = aws_kms_key.ssm_parameter_cmk.arn
   type = "SecureString"
   value = templatefile(
     "${path.module}/template_files/nginx.conf.tftpl", {
