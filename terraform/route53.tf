@@ -19,7 +19,7 @@ resource "aws_route53_record" "api" {
 resource "aws_route53_zone" "this" {
   for_each = local.base_domains
   #checkov:skip=CKV2_AWS_39:Query logging enabled using aws_route53_query_log resources seperatly
-
+  #checkov:skip=CKV2_AWS_38:DNSSEC enabled with aws_route53_signing_key resources seperatly
   name = each.value
   vpc {
     vpc_id = local.vpc_id
