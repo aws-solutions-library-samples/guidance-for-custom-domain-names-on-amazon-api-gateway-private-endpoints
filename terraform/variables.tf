@@ -150,3 +150,9 @@ variable "external_alb_sg_id" {
   }
 
 }
+
+variable "enable_task_exec" {
+  type     = bool
+  default  = false
+  nullable = false
+}

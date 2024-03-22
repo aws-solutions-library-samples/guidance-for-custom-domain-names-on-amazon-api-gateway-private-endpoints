@@ -101,9 +101,9 @@ resource "random_id" "nginx_config" {
 }
 
 resource "aws_ssm_parameter" "nginx_config" {
-  name = "nginx-conf-${random_id.nginx_config.id}"
-  #checkov:skip=CKV_AWS_337:CMK is out of scope for this solution, users can add CMK if desired
-  type = "SecureString"
+  name   = "nginx-conf-${random_id.nginx_config.id}"
+  key_id = aws_kms_key.ssm_parameter_cmk.arn
+  type   = "SecureString"
   value = templatefile(
     "${path.module}/template_files/nginx.conf.tftpl", {
       apis = zipmap(
@@ -127,11 +127,12 @@ resource "aws_ecs_task_definition" "app" {
   }
   container_definitions = jsonencode(
     [{
-      cpu       = 512
-      image     = docker_registry_image.nginx.name
-      memory    = 1024
-      name      = local.service_name
-      essential = true
+      cpu                  = 512
+      image                = docker_registry_image.nginx.name
+      memory               = 1024
+      name                 = local.service_name
+      essential            = true
+      initProcessesEnabled = true
       healthcheck = {
         command  = ["CMD-SHELL", "curl --cacert /cert.pem https://localhost || exit 1"]
         interval = 30
@@ -187,7 +188,7 @@ resource "aws_ecs_service" "nginx" {
   scheduling_strategy    = "REPLICA"
   desired_count          = 1
   force_new_deployment   = true
-  enable_execute_command = false
+  enable_execute_command = var.enable_task_exec
   deployment_circuit_breaker {
     enable   = true
     rollback = true

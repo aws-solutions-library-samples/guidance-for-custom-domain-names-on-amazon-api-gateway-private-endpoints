@@ -18,9 +18,8 @@ resource "aws_route53_record" "api" {
 
 resource "aws_route53_zone" "this" {
   for_each = local.base_domains
-  #checkov:skip=CKV2_AWS_38:DNSSEC may be enabled by customers if desired but is out of scope for this template
   #checkov:skip=CKV2_AWS_39:Query logging enabled using aws_route53_query_log resources seperatly
-
+  #checkov:skip=CKV2_AWS_38:DNSSEC is not supported for private zones
   name = each.value
   vpc {
     vpc_id = local.vpc_id
@@ -28,8 +27,8 @@ resource "aws_route53_zone" "this" {
 }
 
 resource "aws_cloudwatch_log_group" "this" {
-  #checkov:skip=CKV_AWS_158:Log group encryption may be enabled by customers if desired but is out of scope for this template
   for_each          = local.base_domains
+  kms_key_id        = aws_kms_key.route53_logs_cmk.arn
   name_prefix       = "/aws/route53/${each.value}"
   retention_in_days = 365
 }

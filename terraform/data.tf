@@ -10,3 +10,5 @@ data "aws_vpc" "selected" {
 }
 
 data "aws_partition" "current" {}
+
+data "aws_elb_service_account" "this" {}

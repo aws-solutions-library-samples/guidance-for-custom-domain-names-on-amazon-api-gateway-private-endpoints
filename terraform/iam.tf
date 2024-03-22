@@ -77,8 +77,20 @@ resource "aws_iam_policy" "fargate_task" {
           Action = [
             "s3:GetObject"
           ]
-          Resource = "arn:aws:s3:::prod-${data.aws_region.current.name}-starport-layer-bucket/*"
-        }
+          Resource = "arn:${data.aws_partition.current.id}:s3:::prod-${data.aws_region.current.name}-starport-layer-bucket/*"
+        },
+        var.enable_task_exec ?
+        {
+          Effect = "Allow"
+          Action = [
+            "ssmmessages:CreateControlChannel",
+            "ssmmessages:CreateDataChannel",
+            "ssmmessages:OpenControlChannel",
+            "ssmmessages:OpenDataChannel",
+            "ssm:StartSession"
+          ],
+          Resource = "*"
+        } : null
       ]
     }
   )
@@ -152,13 +164,12 @@ data "aws_iam_policy_document" "nlb_access_log_policy" {
 
 data "aws_iam_policy_document" "alb_access_log_policy" {
   statement {
-    sid       = "AWSLogDelivery"
     effect    = "Allow"
-    actions   = ["s3:PubObject"]
+    actions   = ["s3:PutObject"]
     resources = ["${module.elb_bucket.s3_bucket_arn}/*"]
     principals {
-      type        = "AWS"
-      identifiers = ["arn:${data.aws_partition.current.id}:iam::${data.aws_caller_identity.current.account_id}:root"]
+      type        = can(regex(local.region_regex, data.aws_region.current.id)) ? "AWS" : "Service"
+      identifiers = can(regex(local.region_regex, data.aws_region.current.id)) ? [data.aws_elb_service_account.this.arn] : ["delivery.logs.amazonaws.com"]
     }
   }
 }
