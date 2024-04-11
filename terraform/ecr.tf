@@ -35,6 +35,55 @@ resource "aws_ecr_repository" "nginx" {
   }
 }
 
+resource "aws_ecr_lifecycle_policy" "nginx" {
+  repository = aws_ecr_repository.nginx.name
+
+  policy = jsonencode({
+    rules = [
+      {
+        rulePriority = 1,
+        description  = "Expire tagged images older than 300 days",
+        selection = {
+          tagStatus   = "tagged",
+          tagPrefixList = ["nginx"],
+          countType   = "sinceImagePushed",
+          countUnit   = "days",
+          countNumber = 300
+        },
+        action = {
+          type = "expire"
+        }
+      },
+            {
+        rulePriority = 2,
+        description  = "Expire untagged images older than 10 days",
+        selection = {
+          tagStatus   = "untagged",
+          countType   = "sinceImagePushed",
+          countUnit   = "days",
+          countNumber = 10
+        },
+        action = {
+          type = "expire"
+        }
+      },
+      {
+        rulePriority = 3,
+        description  = "Keep last 30 images",
+        selection = {
+          tagStatus   = "any",
+          countType   = "imageCountMoreThan",
+          countNumber = 30
+        },
+        action = {
+          type = "expire"
+        }
+      }
+    ]
+  })
+
+}
+
 resource "docker_image" "nginx" {
   name = "${aws_ecr_repository.nginx.repository_url}:${random_id.image_tag.hex}"
   build {
