@@ -432,6 +432,13 @@ Do you really want to destroy all resources?
 
   Enter a value: yes
 ```
-
+### Understanding Cost of the Solution
+Most of the services mentioned in this solution are billed according to usage, which is determined by the number of requests made. However, there are a few services that incur hourly or monthly costs. These include:
+- Monthly fees for [Route 53 hosted zones](https://aws.amazon.com/route53/pricing/)
+- Hourly charges for [VPC endpoints](https://aws.amazon.com/privatelink/pricing/)
+- [Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/pricing/)
+- Hourly cost of running the NGINX reverse proxy on Fargate
+To estimate the cost for these options based on your specific workload, you can utilize the [AWS pricing calculator](https://calculator.aws/#/). 
+Here is an example outlining the approximate cost associated with the architecture implemented in this solution: [AWS Pricing Calculator Estimate](https://calculator.aws/#/estimate?id=78e72ff1c7e8224515445577cb6691759c76c578).
 
 [def]: ./assets/Architecture.png "Solution Overview"
