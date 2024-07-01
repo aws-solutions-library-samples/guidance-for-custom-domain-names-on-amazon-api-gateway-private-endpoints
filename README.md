@@ -8,6 +8,7 @@ See this blog [post](https://aws.amazon.com/blogs/compute/implementing-custom-do
 
 - [Implementing Custom Domain names with a Reverse Proxy for Amazon API Gateway Private Endpoints](#Implementing Custom Domain names with a Reverse Proxy for Amazon API Gateway Private Endpoints)
   - [Services Used](#services-used)
+  - [Cost of the Solution](#cost-of-the-solution)
   - [Architecture](#architecture)
   - [Traffic Flow](#traffic-flow)
   - [Pre Deployment Steps](#pre-deployment-steps)
@@ -35,6 +36,26 @@ See this blog [post](https://aws.amazon.com/blogs/compute/implementing-custom-do
 - [Amazon API Gateway](https://aws.amazon.com/api-gateway/)
 - [AWS Fargate](https://aws.amazon.com/fargate/)
 - [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/)
+
+### Cost of the Solution
+Most of the services mentioned in this solution are billed according to usage, which is determined by the number of requests made. However, there are a few services that incur hourly or monthly costs. These include:
+- Monthly fees for [Route 53 hosted zones](https://aws.amazon.com/route53/pricing/)
+- Hourly charges for [VPC endpoints](https://aws.amazon.com/privatelink/pricing/)
+- [Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/pricing/)
+- Hourly cost of running the NGINX reverse proxy on Fargate
+To estimate the cost for these options based on your specific workload, you can utilize the [AWS pricing calculator](https://calculator.aws/#/). 
+Here is an example outlining the approximate cost associated with the architecture implemented in this solution:
+
+| **AWS service**   | Dimensions                                             | Monthly cost \[USD\] |
+| ----------------- | ------------------------------------------------------ | -------------------- |
+| Amazon Route 53   | Hosted Zones (1) | \$ 0.9           |
+| VPN Connection | Working days per month (22)            | \$ 0            |
+| AWS PrivateLink        | Number of VPC Interface endpoints per AWS region (4)     | \$ 58.41            |
+| Application Load Balancer       | Number of Application Load Balancers (1)                | \$ 74.83              |
+| AWS Fargate   | Operating system (Linux), CPU Architecture (ARM), Average duration (30 days), Number of tasks or pods (2 per month), Amount of ephemeral storage allocated for Amazon ECS (20 GB)               | \$ 14.22            |
+| Total             |                                                        | \$ 148.36             |
+
+[def]: ./assets/Architecture.png "Solution Overview"
 
 ## Architecture
 
@@ -432,13 +453,4 @@ Do you really want to destroy all resources?
 
   Enter a value: yes
 ```
-### Understanding Cost of the Solution
-Most of the services mentioned in this solution are billed according to usage, which is determined by the number of requests made. However, there are a few services that incur hourly or monthly costs. These include:
-- Monthly fees for [Route 53 hosted zones](https://aws.amazon.com/route53/pricing/)
-- Hourly charges for [VPC endpoints](https://aws.amazon.com/privatelink/pricing/)
-- [Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/pricing/)
-- Hourly cost of running the NGINX reverse proxy on Fargate
-To estimate the cost for these options based on your specific workload, you can utilize the [AWS pricing calculator](https://calculator.aws/#/). 
-Here is an example outlining the approximate cost associated with the architecture implemented in this solution: [AWS Pricing Calculator Estimate](https://calculator.aws/#/estimate?id=78e72ff1c7e8224515445577cb6691759c76c578).
 
-[def]: ./assets/Architecture.png "Solution Overview"
